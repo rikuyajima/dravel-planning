@@ -1,4 +1,4 @@
-#<サイト名：dravel pkanning>
+#<サイト名：dravel planning>
 
 ## サイト概要
 >ドライブコースの投稿・閲覧ができるコミュニティサイト
