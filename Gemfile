@@ -59,4 +59,5 @@ gem 'devise'
 
 gem 'net-smtp'
 
- gem "enum_help"
+gem "enum_help"
+ 

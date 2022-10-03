@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_02_143556) do
+ActiveRecord::Schema.define(version: 2022_10_03_092032) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 2022_10_02_143556) do
     t.text "introduction"
     t.integer "minutes", null: false
     t.string "attention"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "relays", force: :cascade do |t|
+    t.integer "plan_id", null: false
+    t.string "reley_point", null: false
+    t.text "point_introduction"
+    t.integer "travel_time", null: false
+    t.string "travel_attention"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
