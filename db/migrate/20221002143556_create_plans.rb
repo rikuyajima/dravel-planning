@@ -7,7 +7,8 @@ class CreatePlans < ActiveRecord::Migration[6.1]
       t.string :destination, null:false
       t.string :start, null: false
       t.string :gole, null: false
-      t.text :introduction
+      t.text :start_introductiont
+      t.text :gole_introduction
       t.integer :minutes, null: false
       t.string :attention
 

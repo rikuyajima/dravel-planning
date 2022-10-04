@@ -6,10 +6,10 @@
       ログアウト
     </p>
     <% end %>
-    
-<% elsif customer_signed_in? %>
+
+<% elsif user_signed_in? %>
    <li class="list-inline-item">
-    <%= link_to destroy_customer_session_path, method: :delete do %>
+    <%= link_to destroy_user_session_path, method: :delete do %>
     <p class="text-white">
       ログアウト
     </p>
@@ -20,7 +20,7 @@
 </div>
 <% else %>
    <li class="list-inline-item">
-    <%= link_to new_customer_registration_path do %>
+    <%= link_to new_user_registration_path do %>
     <p class="text-white">
       新規登録
     </p>
@@ -28,7 +28,7 @@
     </li>
 
     <li class="list-inline-item">
-    <%= link_to new_customer_session_path do %>
+    <%= link_to new_user_session_path do %>
     <p class="text-white">
       ログイン
     </p>

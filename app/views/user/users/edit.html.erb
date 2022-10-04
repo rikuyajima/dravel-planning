@@ -1,0 +1,28 @@
+<div class="d-flex align-items-center">
+  <div class="container">
+   <div class="row ml-4">
+    <div class="col-9 px-0 mt-3 ml-4">
+      <h4 class="mb-4"><strong>ユーザー情報編集</strong></h4>
+        <div class="shadow-lg px-5 py-5">
+          <%= form_with model: @user do |f| %>
+            <table class="table pl-5">
+              <tr>
+                <th>プロフィール写真を選択</th>
+                <th><%= f.file_field :profile_image, class: "form-control-file image", accept: 'image/*' %></th>
+              </tr>
+              <tr>
+                <th>アカウントネーム</th>
+                <th><%= f.text_field :name, class: "form-control name" %></th>
+              </tr>
+              <tr>
+                <th>自己紹介</th>
+                <th><%= f.text_area :name, class: "form-control name" %></th>
+              </tr>
+            </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

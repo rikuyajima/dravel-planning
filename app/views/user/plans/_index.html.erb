@@ -1,0 +1,28 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>投稿者</th>
+      <th>都道府県</th>
+      <th>スタート</th>
+      <th></th>
+      <th>ゴール</th>
+      <th>お気に入り数</th>
+      <th>コメント数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% plans.each do |plan| %>
+    <tr>
+      <td>
+        <%= link_to(plan.user) do %>
+        <%= image_tag plan.user.get_profile_image, size:'50x50' %>
+        <% end %>
+        <%= plan.user.name %>
+      </td>
+      <td><%= plan.prefecture %></td>
+      <td><%= plan.start %></td>
+      <td><i class="fa-duotone fa-arrow-right"></i></td>
+      <td><%= plan.gole %></td>
+    <% end %>
+  </tbody>
+</table>
