@@ -1,17 +1,17 @@
-<div class="d-flex align-items-center">
-   <div class="bg-info d-flex align-items-center justify-content-center" style="height:300px;">
-      <div class="profile_image">
-          <%= image_tag @user.get_profile_image(200,200), class="rounded-circle" %>
-      </div>
-      <div class="user_name">
-          <%= @user.name %>
-      </div>
-      <div class="profile">
-          <%= @user.profile %>
-      </div>
-      <div class="edit_profile">
-          <%= link_to "編集する", edit_user_path(@user) %>
-      </div>
+<div class="center-block">
+   <div class="rounded-circle">
+       <%= image_tag @user.get_profile_image(200,200) %>
+   </div>
+   <div class="user_name">
+       <%= @user.name %>
+   </div>
+   <div class="profile">
+       <%= @user.profile %>
+   </div>
+   <div class="edit_profile">
+       <% if @user == current_user %>
+       <%= link_to "編集する", edit_user_path(@user) %>
+   <% end %>
    </div>
 </div>
 

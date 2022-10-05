@@ -1,2 +1,68 @@
-<h1>Public::Plans#show</h1>
-<p>Find me in app/views/public/plans/show.html.erb</p>
+<div class="container">
+   <div class="row ml-4">
+    <div class="col-9 px-0 mt-3 ml-4">
+      <tr>
+        <th><%= image_tag @plan.user.get_profile_image, size:'50x50' %></th>
+      </tr>
+      
+      <tr>
+        <th><%= @plan.user.name %></th>
+      </tr>
+      
+      <tr>
+        <th>こんなときにおすすめ！<i class="fa-light fa-arrow-right"></i><%= @plan.situation %></th>
+      </tr>
+      
+      <tr>
+        <th>スタート地点は<%= @plan.prefecture %>の<%= @plan.start %><i class="fa-regular fa-car-side"></i></th>
+      </tr>
+      
+      <tr>
+        <!--投稿されたスタート地点の写真-->
+        <th><%= image_tag @plan.start_image, class: "form-control-file image", accept: 'image/*' %></th>
+      </tr>
+      
+      <tr>
+        <th>おすすめポイント☆</th>
+      </tr>
+      <tr>
+      　<th><%= @plan.start_introductiont %></th>
+      </tr>
+      
+      <tr>
+        <th>次のポイントまでの移動時間</th>
+      </tr>
+      <!--四角と三角で時間を囲んで一つの大きな矢印みたいにする-->
+      <tr>
+        <!--四角-->
+        <th><i class="fa-sharp fa-solid fa-square"></i></th>
+      </tr>
+      <tr>
+        <!--時間-->
+        <th><%= @plan.minutes %>分</i></th>
+      </tr>
+      <tr>
+        <!--三角-->
+        <th><i class="fa-sharp fa-solid fa-caret-down"></i></i></th>
+      </tr>
+      
+      <tr>
+        <th>ゴール<i class="fa-solid fa-flag-checkered"></i><%= @plan.gole %></i></th>
+      </tr>
+      
+      <tr>
+        <!--投稿されたゴール地点の写真-->
+        <th><%= image_tag @plan.gole_image, class: "form-control-file image", accept: 'image/*' %></th>
+      </tr>
+      
+      <tr>
+        <th>おすすめポイント☆</th>
+      </tr>
+      <tr>
+      　<th><%= @plan.gole_introduction %></th>
+      </tr>
+    </div>
+  </div>
+</div>
+      
+      

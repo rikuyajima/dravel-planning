@@ -7,7 +7,7 @@ class Plan < ApplicationRecord
    ##cocoonを導入。relayを保存する
   accepts_nested_attributes_for :relays, allow_destroy: true
   
-  enum situation: {ーーーー:0, 家族でドライブ:1, 友達とドライブ:2, デート:3, 誰とでも:4, その他:5}
+  enum situation: {ーーーー:0, 家族でドライブ:1, 友達とドライブ:2, デート:3, 誰とでも楽しめる:4, 一人で楽しみたい:5}
   
   enum prefecture:{
      "---":0,
