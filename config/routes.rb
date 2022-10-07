@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :user do
+    get 'perfectures/show'
+  end
 # ユーザー用
 devise_for :users, controllers: {
   registrations: "user/registrations",
@@ -13,9 +16,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     root to: 'homes#top'
     resources :plans, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
-  end
-  namespace :admin do
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :perfectures, only: [:show]
   end
 
+  namespace :admin do
+    resources :perfectures, only: [:index, :create]
+  end
 end

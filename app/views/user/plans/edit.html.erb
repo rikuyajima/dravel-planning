@@ -1,2 +1,86 @@
-<h1>Public::Plans#edit</h1>
-<p>Find me in app/views/public/plans/edit.html.erb</p>
+<div class="d-flex align-items-center">
+  <div class="container">
+   <div class="row ml-4">
+    <div class="col-9 px-0 mt-3 ml-4">
+      <h4 class="mb-4"><strong>投稿内容編集</strong></h4>
+      <div class="shadow-lg px-5 py-5">
+      <%= form_with model: @plan, url: plan_path, method: :patch do |f| %>
+        <table class="table pl-5">
+          <tr>
+            <th>おすすめのシチュエーション</th>
+            <th><%= f.select :situation,Plan.situations.keys, class: "form-control situation" %></th>
+          </tr>
+          <tr>
+            <th>スタート地点の都道府県</th>
+            <th><%= f.collection_select :perfecture_id, Perfecture.all, :id, :name, {include_blank: '--選択してください--'} %></th>
+          </tr>
+          <tr>
+            <th>スタート地点</th>
+            <th><%= f.text_field :start, class: "form-control start" %></th>
+          </tr>
+          <tr>
+            <th>現地の写真</th>
+            <th><%= f.file_field :start_image, class: "form-control-file image", accept: 'image/*' %></th>
+          </tr>
+          <tr>
+            <th>おすすめポイント！</th>
+            <th><%= f.text_area :start_introductiont, class: "form-control introduction" %></th>
+          </tr>
+          <tr>
+            <th>次のポイントまでの移動時間</th>
+            <th>約<%= f.select :minutes,*[1..59], class: "form-control minutes" %>分</th>
+          </tr>
+          <tr>
+            <th>道中気をつけた方がいい事やおすすめのルートがあれば教えてあげましょう！</th>
+            <th><%= f.text_area :attention, class: "form-control introduction" %></th>
+          </tr>
+            <div class="add-botton-box">
+              <tr>
+                <th>
+                  <%= link_to_add_association "+中継スポットを追加", f, :relays,
+                  data: {
+                  association_insertion_node: '#detail-association-insertion-point',
+                  association_insertion_method: 'after'
+                  }%>
+                </th>
+              </tr>
+            </div>
+          <tr>
+            <th><div id="detail-association-insertion-point"></div></th>
+          </tr>
+          <!--追加された中継地点を編集できる-->
+          <% @plan.relays.each do |relay| %>
+              <tr>
+                <th>
+                  <%= f.fields_for :relays do |t| %>
+                  <%= render "user/plans/relay_fields", f: t %>
+                  <% end %>
+                </th>
+              </tr>
+          <% end %>
+          <tr>
+            <th>ゴール地点</th>
+            <th><%= f.text_field :start, class: "form-control start" %></th>
+          </tr>
+          <tr>
+            <th>現地の写真</th>
+            <th class="field">
+            <%= f.file_field :gole_image, class: "form-control-file image", accept: 'image/*' %>
+            </th>
+          </tr>
+          <tr>
+            <th>おすすめポイント！</th>
+            <th><%= f.text_area :gole_introduction, class: "form-control introduction" %></th>
+          </tr>
+
+          <tr>
+            <th><%= f.submit '編集内容を保存する', class:"btn btn-success" %></th>
+          </tr>
+
+        </table>
+      <% end %>
+      </div>
+    </div>
+   </div>
+  </div>
+</div>

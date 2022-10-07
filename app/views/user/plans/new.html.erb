@@ -8,7 +8,7 @@
         <table class="table pl-5">
           <tr>
             <th>スタート地点の都道府県</th>
-            <th><%= f.select :prefecture,Plan.prefectures.keys, class: "form-control prefecture" %></th>
+            <th><%= f.collection_select :perfecture_id, Perfecture.all, :id, :name, {include_blank: '--選択してください--'} %></th>
           </tr>
           <tr>
             <th>おすすめのシチュエーション</th>
@@ -24,7 +24,7 @@
           </tr>
           <tr>
             <th>おすすめポイント！</th>
-            <th><%= f.text_area :start_introductiont, class: "form-control introduction" %></th>
+            <th><%= f.text_area :start_introduction, class: "form-control introduction" %></th>
           </tr>
           <tr>
             <th>次のポイントまでの移動時間</th>
@@ -57,7 +57,7 @@
               </tr>
           <tr>
             <th>ゴール地点</th>
-            <th><%= f.text_field :start, class: "form-control start" %></th>
+            <th><%= f.text_field :gole, class: "form-control start" %></th>
           </tr>
           <tr>
             <th>現地の写真</th>
@@ -68,6 +68,9 @@
           <tr>
             <th>おすすめポイント！</th>
             <th><%= f.text_area :gole_introduction, class: "form-control introduction" %></th>
+          </tr>
+          <tr>
+            <th><%= f.submit '新規登録', class: "btn btn-success mx-2" %></th>
           </tr>
         </table>
       <% end %>

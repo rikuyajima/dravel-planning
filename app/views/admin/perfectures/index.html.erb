@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-7 mx-auto">
+      <h4 class="m-3"><strong>都道府県一覧</strong></h4>
+      <%= form_with model:@perfecture, url: admin_perfectures_path, local:true do |f| %>
+      <p class="my-5 mx-2">都道府県名
+          <%= f.text_field :name, class: "mx-2" %>
+          <%= f.submit '新規登録', class: "btn btn-success mx-2" %>
+        </p>
+      <% end %>
+
+      <table class="table table-hover table-inverse shadow-lg">
+        <thead>
+          <tr>
+            <th class="table-active">都道府県</th>
+            <th class="table-active"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @perfectures.each do |perfecture| %>
+            <tr>
+              <td>
+                <%= perfecture.name %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

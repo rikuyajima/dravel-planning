@@ -1,0 +1,16 @@
+<table class="perfecture-table table table-bordered table-hover">
+  <thead class="perfecture">
+    <tr>
+      <th class="active table-active">都道府県検索</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% perfectures.each do |perfecture| %>
+    <tr>
+      <td>
+        <%= link_to perfecture.name, perfecture_path(perfecture.id), class:"ec-genre-list-item text-dark"%>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

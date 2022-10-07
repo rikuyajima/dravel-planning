@@ -8,6 +8,7 @@
       <th>ゴール</th>
       <th>お気に入り数</th>
       <th>コメント数</th>
+      <th>詳細</th>
     </tr>
   </thead>
   <tbody>
@@ -15,14 +16,17 @@
     <tr>
       <td>
           <%= link_to(plan.user) do %>
-          <%= image_tag plan.user.get_profile_image, size:'50x50' %>
+          <%= image_tag plan.user.get_profile_image(50,50) %>
           <% end %>
           <%= plan.user.name %>
       </td>
-      <td><%= plan.prefecture %></td>
+      <td><%= plan.perfecture.name %></td>
       <td><%= plan.start %></td>
       <td><i class="fa-duotone fa-arrow-right"></i></td>
       <td><%= plan.gole %></td>
+      <td></td>
+      <td></td>
+      <td><%= link_to "詳細情報", plan_path(plan.id) %></td>
     <% end %>
   </tbody>
 </table>

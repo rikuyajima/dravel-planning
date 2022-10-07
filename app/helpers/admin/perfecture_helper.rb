@@ -1,0 +1,2 @@
+module Admin::PerfectureHelper
+end

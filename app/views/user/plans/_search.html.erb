@@ -1,0 +1,9 @@
+<h3>都道府県から検索</h3>
+
+<%= form_tag({controller:"plans",action:"index"}, method: :get) do %>
+
+ <%= text_field_tag :search %>
+
+ <%= submit_tag '検索する' %>
+
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_05_040203) do
+ActiveRecord::Schema.define(version: 2022_10_07_023425) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,17 +52,29 @@ ActiveRecord::Schema.define(version: 2022_10_05_040203) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "plan_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "perfectures", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "plans", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "prefecture", default: 0, null: false
     t.integer "situation", default: 0, null: false
-    t.string "destination", null: false
     t.string "start", null: false
     t.string "gole", null: false
-    t.text "start_introductiont"
+    t.text "start_introduction"
     t.text "gole_introduction"
     t.integer "minutes", null: false
     t.string "attention"
+    t.integer "perfecture_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

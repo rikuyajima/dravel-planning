@@ -1,10 +1,10 @@
 class User::UsersController < ApplicationController
-  before_action :correct_user, only: [:edit, :update]
+  before_action :current_user, only: [:edit, :update]
   def show
     @user = User.find(params[:id])
     @plans = @user.plans
   end
-  
+
   def edit
     @user = User.find(params[:id])
     if @user == current_user
@@ -13,7 +13,7 @@ class User::UsersController < ApplicationController
     redirect_to user_path(current_user)
     end
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)

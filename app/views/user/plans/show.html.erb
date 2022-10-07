@@ -1,68 +1,95 @@
 <div class="container">
    <div class="row ml-4">
-    <div class="col-9 px-0 mt-3 ml-4">
-      <tr>
-        <th><%= image_tag @plan.user.get_profile_image, size:'50x50' %></th>
-      </tr>
-      
-      <tr>
-        <th><%= @plan.user.name %></th>
-      </tr>
-      
-      <tr>
-        <th>こんなときにおすすめ！<i class="fa-light fa-arrow-right"></i><%= @plan.situation %></th>
-      </tr>
-      
-      <tr>
-        <th>スタート地点は<%= @plan.prefecture %>の<%= @plan.start %><i class="fa-regular fa-car-side"></i></th>
-      </tr>
-      
-      <tr>
+    <div class="col-md-8 col-md-offset-2">
+      <!--スタート地点を表示-->
+      <div>
+        <%= image_tag @plan.user.get_profile_image(50,50) %>
+      </div>
+
+      <div>
+        <%= @plan.user.name %>
+      </div>
+
+      <div>
+        こんなときにおすすめ！<i class="fa-light fa-arrow-right"></i><%= @plan.situation %>
+      </div>
+
+      <div>
+        スタート地点は<%= @plan.perfecture.name %>の<%= @plan.start %><i class="fa-regular fa-car-side"></i>
+      </div>
+
+      <div>
         <!--投稿されたスタート地点の写真-->
-        <th><%= image_tag @plan.start_image, class: "form-control-file image", accept: 'image/*' %></th>
-      </tr>
-      
-      <tr>
-        <th>おすすめポイント☆</th>
-      </tr>
-      <tr>
-      　<th><%= @plan.start_introductiont %></th>
-      </tr>
-      
-      <tr>
-        <th>次のポイントまでの移動時間</th>
-      </tr>
+        <%= image_tag @plan.get_start_image(100,100), class: "form-control-file image", accept: 'image/*' %>
+      </div>
+
+      <div>
+        おすすめポイント☆
+      </div>
+      <div>
+      　<%= @plan.start_introduction %>
+      </div>
+
+      <div>
+        次のポイントまでの移動時間
+      </div>
       <!--四角と三角で時間を囲んで一つの大きな矢印みたいにする-->
-      <tr>
+      <div>
         <!--四角-->
-        <th><i class="fa-sharp fa-solid fa-square"></i></th>
-      </tr>
-      <tr>
+        <i class="fa-sharp fa-solid fa-square"></i>
+      </div>
+      <div>
         <!--時間-->
-        <th><%= @plan.minutes %>分</i></th>
-      </tr>
-      <tr>
+        <%= @plan.minutes %>分
+      </div>
+      <div>
         <!--三角-->
-        <th><i class="fa-sharp fa-solid fa-caret-down"></i></i></th>
+        <i class="fa-sharp fa-solid fa-caret-down"></i>
+      </div>
+
+      <!--中継地点を表示-->
+      <% @plan.relays.each do |relay| %>
+      <div>
+        <th>中継ポイント<i class="fa-solid fa-location-dot"></i><%= relay.relay_point %></th>
       </tr>
-      
-      <tr>
-        <th>ゴール<i class="fa-solid fa-flag-checkered"></i><%= @plan.gole %></i></th>
-      </tr>
-      
-      <tr>
+
+      <div>
+        <%= image_tag relay.get_image(100,100), class: "form-control-file image", accept: 'image/*' %>
+      <div>
+
+      <div>
+        おすすめポイント☆
+      </div>
+
+      <div>
+        <%= relay.point_introduction %>
+      </div>
+      <% end %>
+
+      <!--ゴール地点を表示-->
+      <div>
+        ゴール<i class="fa-solid fa-flag-checkered"></i><%= @plan.gole %></i>
+      </div>
+
+      <div>
         <!--投稿されたゴール地点の写真-->
-        <th><%= image_tag @plan.gole_image, class: "form-control-file image", accept: 'image/*' %></th>
-      </tr>
-      
-      <tr>
-        <th>おすすめポイント☆</th>
-      </tr>
-      <tr>
-      　<th><%= @plan.gole_introduction %></th>
-      </tr>
+        <%= image_tag @plan.get_gole_image(100,100), class: "form-control-file image", accept: 'image/*' %>
+      </div>
+
+      <div>
+        おすすめポイント☆
+      </div>
+      <div>
+      　<%= @plan.gole_introduction %>
+      </div>
+      <% if @plan.user == current_user %>
+      <div>
+        <%= link_to "Edit", edit_plan_path(@plan), class:"btn btn-sm btn-success" %>
+        <%= link_to "Destroy", plan_path(@plan), method: :delete , class:"btn btn-sm btn-danger" %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
-      
-      
+
+
