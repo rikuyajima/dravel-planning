@@ -27,7 +27,7 @@
         おすすめポイント☆
       </div>
       <div>
-      　<%= @plan.start_introduction %>
+        <%= @plan.start_introduction %>
       </div>
 
       <div>
@@ -80,15 +80,39 @@
         おすすめポイント☆
       </div>
       <div>
-      　<%= @plan.gole_introduction %>
+        <%= @plan.gole_introduction %>
       </div>
+<!--お気に入り・コメント機能-->
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-6'>
+      <table class='table'>
+        <!--お気に入りボタン-->
+        <td class="favorite_buttons_<%= @plan.id %>">
+           <%= render 'user/favorites/favorite', plan: @plan %>
+        </td>
+    </div>
+    <div class='col-md-6'>
+        <td><%= @plan.plan_comments.count %>件のコメント</td>
+      </table>
+      <!--コメント入力ホーム-->
+        <div class="new-comment">
+           <%= render 'user/plan_comments/form', plan: @plan, plan_comment: @comment %>
+        </div>
+      <!--コメント一覧-->
+        <div class="comments_area">
+           <%= render 'user/plan_comments/plan_comment', plan: @plan, plan_comment: @comment %>
+        </div>
+    </div>
+  </div>
+</div>
       <% if @plan.user == current_user %>
       <div>
         <%= link_to "Edit", edit_plan_path(@plan), class:"btn btn-sm btn-success" %>
         <%= link_to "Destroy", plan_path(@plan), method: :delete , class:"btn btn-sm btn-danger" %>
       </div>
       <% end %>
-    </div>
+   </div>
   </div>
 </div>
 

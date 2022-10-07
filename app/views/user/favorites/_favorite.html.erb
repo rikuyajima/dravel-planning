@@ -1,0 +1,9 @@
+<% if plan.favorited_by?(current_user) %>
+   <%= link_to plan_favorites_path(plan), method: :delete, remote: true do %>
+   ★<%= plan.favorites.count %>
+   <% end %>
+   <% else %>
+   <%= link_to plan_favorites_path(plan), method: :post, remote: true do %>
+   ☆<%= plan.favorites.count %>
+   <% end %>
+  <% end %>

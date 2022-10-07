@@ -14,7 +14,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   scope module: :user do
     root to: 'homes#top'
-    resources :plans, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :plans, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+    resources :plan_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+    end
     resources :users, only: [:index, :show, :edit, :update]
     resources :perfectures, only: [:show]
   end
