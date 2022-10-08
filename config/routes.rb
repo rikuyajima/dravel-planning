@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :user do
-    get 'perfectures/show'
-  end
 # ユーザー用
 devise_for :users, controllers: {
   registrations: "user/registrations",
@@ -23,6 +20,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   end
 
   namespace :admin do
+    resources :users, only: [:index, :show]
+    resources :plans, only: [:index, :show]
     resources :perfectures, only: [:index, :create]
   end
 end

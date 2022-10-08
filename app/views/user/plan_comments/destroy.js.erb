@@ -1,3 +1,3 @@
-$('.comments_area').html("<%= j(render 'user/plan_comments/plan_comment', plan: @plan, comment: @) %>");
+$('.comments_area').html("<%= j(render 'user/plan_comments/plan_comment', plan: @plan, comment: @comment) %>");
 
 $("textarea").val('');

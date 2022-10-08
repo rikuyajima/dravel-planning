@@ -6,7 +6,10 @@ class Plan < ApplicationRecord
   belongs_to :user
   has_many :relays, inverse_of: :plan, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_posts, through: :favorites, source: :post
   has_many :plan_comments, dependent: :destroy
+  validates :start_introduction, {length: {maximum: 140}}
+  validates :start_introduction, {length: {maximum: 140}}
    ##cocoonを導入。relayを保存する
   accepts_nested_attributes_for :relays, allow_destroy: true
 

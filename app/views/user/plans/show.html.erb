@@ -1,119 +1,155 @@
 <div class="container">
-   <div class="row ml-4">
-    <div class="col-md-8 col-md-offset-2">
-      <!--スタート地点を表示-->
+   <div class="mx-auto">
+     <div class="text-center">
+       <% if @plan.user == current_user %>
       <div>
-        <%= image_tag @plan.user.get_profile_image(50,50) %>
+        <%= link_to "投稿内容を編集する", edit_plan_path(@plan), class:"btn btn-sm btn-success" %>
+        <%= link_to "消去する", plan_path(@plan), method: :delete , class:"btn btn-sm btn-danger" %>
+      </div>
+      <% end %>
+       <!--スタート地点を表示-->
+      <div>
+        <p>投稿者：<%= image_tag @plan.user.get_profile_image(50,50) %>　<%= @plan.user.name %></p>
       </div>
 
       <div>
-        <%= @plan.user.name %>
+        おすすめのシチュエーション<i class="fa-solid fa-car"></i> |<%= @plan.situation %>|
       </div>
+
 
       <div>
-        こんなときにおすすめ！<i class="fa-light fa-arrow-right"></i><%= @plan.situation %>
+        <h3>スタート地点は<%= @plan.perfecture.name %>の<%= @plan.start %> <i class="fa-solid fa-car-side"></i></h3>
       </div>
 
-      <div>
-        スタート地点は<%= @plan.perfecture.name %>の<%= @plan.start %><i class="fa-regular fa-car-side"></i>
-      </div>
-
+    <div class="d-flex justify-content-center">
       <div>
         <!--投稿されたスタート地点の写真-->
-        <%= image_tag @plan.get_start_image(100,100), class: "form-control-file image", accept: 'image/*' %>
+        <%= image_tag @plan.get_start_image(200,200) %>
       </div>
 
-      <div>
-        おすすめポイント☆
+      <div class="text-left" style="width: 200px;">
+        <div>
+          <h5>おすすめポイント <i class="fa-solid fa-bullhorn"></i><h5>
+        </div>
+        <p style="width: 200px; word-break: break-word;"><%= @plan.start_introduction %></p>
       </div>
-      <div>
-        <%= @plan.start_introduction %>
-      </div>
+
+    </div>
 
       <div>
         次のポイントまでの移動時間
       </div>
-      <!--四角と三角で時間を囲んで一つの大きな矢印みたいにする-->
       <div>
-        <!--四角-->
-        <i class="fa-sharp fa-solid fa-square"></i>
+        <!--移動時間-->
+        ーーーーーー約<%= @plan.minutes %>分ーーーーーー
       </div>
-      <div>
-        <!--時間-->
-        <%= @plan.minutes %>分
+    <div class="d-flex justify-content-center">
+      <div class="text-left" style="width: 200px;">
+        <div>
+          <h5>移動中の注意点 <i class="fa-solid fa-triangle-exclamation"></i><h5>
+        </div>
+        <p style="width: 200px; word-break: break-word;"><%= @plan.attention %></p>
       </div>
-      <div>
-        <!--三角-->
-        <i class="fa-sharp fa-solid fa-caret-down"></i>
-      </div>
+    </div>
 
-      <!--中継地点を表示-->
+      <div>
+        <h4><i class="fa-solid fa-person-running"></i><i class="fa-solid fa-arrow-down"></i></h4>
+      </div>
+      <div>　</div>
+
+
+       <!--中継地点を表示-->
       <% @plan.relays.each do |relay| %>
       <div>
-        <th>中継ポイント<i class="fa-solid fa-location-dot"></i><%= relay.relay_point %></th>
-      </tr>
-
-      <div>
-        <%= image_tag relay.get_image(100,100), class: "form-control-file image", accept: 'image/*' %>
-      <div>
-
-      <div>
-        おすすめポイント☆
+        <h3><th>中継ポイント<i class="fa-solid fa-location-dot"></i> <%= relay.relay_point %></th></h3>
       </div>
 
+    <div class="d-flex justify-content-center">
       <div>
-        <%= relay.point_introduction %>
+        <!--投稿された中継地点の写真-->
+        <%= image_tag relay.get_image(200,200) %>
       </div>
+
+      <div class="text-left" style="width: 200px;">
+        <div>
+          <h5>おすすめポイント <i class="fa-solid fa-bullhorn"></i><h5>
+        </div>
+        <p style="width: 200px; word-break: break-word;"><%= relay.point_introduction %></p>
+      </div>
+    </div>
+    <div>
+        <!--移動時間-->
+        ーーーーーー約<%= relay.travel_time %>分ーーーーーー
+    </div>
+    <div class="d-flex justify-content-center">
+      <div class="text-left" style="width: 200px;">
+        <div>
+          <h5>移動中の注意点 <i class="fa-solid fa-triangle-exclamation"></i><h5>
+        </div>
+        <p style="width: 200px; word-break: break-word;"><%= relay.travel_attention %></p>
+      </div>
+    </div>
+
+      <div>
+        <h4><i class="fa-solid fa-person-running"></i><i class="fa-solid fa-arrow-down"></i></h4>
+      </div>
+      <div>　</div>
       <% end %>
 
       <!--ゴール地点を表示-->
       <div>
-        ゴール<i class="fa-solid fa-flag-checkered"></i><%= @plan.gole %></i>
+        <h3>ゴール<i class="fa-solid fa-flag-checkered"></i> <%= @plan.gole %></i><h3>
       </div>
 
+     <div class="d-flex justify-content-center">
       <div>
         <!--投稿されたゴール地点の写真-->
-        <%= image_tag @plan.get_gole_image(100,100), class: "form-control-file image", accept: 'image/*' %>
+        <%= image_tag @plan.get_gole_image(200,200) %>
       </div>
 
-      <div>
-        おすすめポイント☆
+      <div class="text-left" style="width: 200px;">
+        <div>
+          <h5>おすすめポイント <i class="fa-solid fa-bullhorn"></i><h5>
+        </div>
+        <p style="width: 200px; word-break: break-word;"><%= @plan.gole_introduction %></p>
       </div>
-      <div>
-        <%= @plan.gole_introduction %>
-      </div>
-<!--お気に入り・コメント機能-->
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-6'>
-      <table class='table'>
-        <!--お気に入りボタン-->
-        <td class="favorite_buttons_<%= @plan.id %>">
-           <%= render 'user/favorites/favorite', plan: @plan %>
-        </td>
     </div>
-    <div class='col-md-6'>
-        <td><%= @plan.plan_comments.count %>件のコメント</td>
-      </table>
-      <!--コメント入力ホーム-->
-        <div class="new-comment">
+    </div>
+  </div>
+</div>
+
+
+<!--お気に入り・コメント機能-->
+<div class="container">
+   <div class="mx-auto">
+     <div class="text-center">
+        <!--お気に入りボタン-->
+       <div class="d-flex justify-content-center">
+        <div class="favorite_buttons_<%= @plan.id %>">
+           <%= render 'user/favorites/favorite', plan: @plan %>
+        </div>
+        <div>　｜　</div>
+        <div>
+          <div><%= @plan.plan_comments.count %>件のコメント｜</div>
+        </div>
+       </div>
+     </div>
+   </div>
+</div>
+
+<div class="container">
+   <div class="mx-auto">
+     <div class="text-center">
+<!--コメント入力ホーム-->
+      <div class="d-flex justify-content-center">
+        <div class="new-comment" style="width: 400px;#">
            <%= render 'user/plan_comments/form', plan: @plan, plan_comment: @comment %>
         </div>
+      </div>
       <!--コメント一覧-->
         <div class="comments_area">
-           <%= render 'user/plan_comments/plan_comment', plan: @plan, plan_comment: @comment %>
+           <%= render 'user/plan_comments/plan_comment', plan: @plan %>
         </div>
-    </div>
-  </div>
-</div>
-      <% if @plan.user == current_user %>
-      <div>
-        <%= link_to "Edit", edit_plan_path(@plan), class:"btn btn-sm btn-success" %>
-        <%= link_to "Destroy", plan_path(@plan), method: :delete , class:"btn btn-sm btn-danger" %>
-      </div>
-      <% end %>
+     </div>
    </div>
-  </div>
 </div>
-
-

@@ -1,17 +1,21 @@
-<div class="center-block">
-   <div class="rounded-circle">
-       <%= image_tag @user.get_profile_image(200,200) %>
-   </div>
-   <div class="user_name">
-       <%= @user.name %>
-   </div>
-   <div class="profile">
-       <%= @user.profile %>
-   </div>
-   <div class="edit_profile">
-       <% if @user == current_user %>
-       <%= link_to "編集する", edit_user_path(@user) %>
-   <% end %>
-   </div>
+<div class="container">
+   <div class="mx-auto">
+     <div class="text-center">
+       <div class="rounded-circle">
+          <%= link_to image_tag(@user.get_profile_image.variant(resize: '200x200'), class:"user-icon"), "#" %>
+       </div>
+       <div class="user_name">
+          <%= @user.name %>
+       </div>
+       <div class="profile">
+          <%= @user.profile %>
+       </div>
+       <div class="edit_profile">
+          <% if @user == current_user %>
+          <%= link_to "編集する", edit_user_path(@user) %>
+          <% end %>
+       </div>
+     </div>
+  </div>
 </div>
 

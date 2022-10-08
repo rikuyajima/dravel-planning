@@ -22,6 +22,7 @@ class User::PlansController < ApplicationController
 
   def show
     @plan = Plan.find(params[:id])
+    @comment = PlanComment.new
   end
 
   def edit
@@ -36,7 +37,7 @@ class User::PlansController < ApplicationController
   def update
     @plan = Plan.find(params[:id])
     if @plan.update(plan_params)
-      flash[:notice] = "You have updated user successfully."
+      flash[:notice] = "投稿内容の修正が正常に完了しました。"
        redirect_to plan_path(@plan.id)
     else
        render :edit
@@ -54,7 +55,7 @@ class User::PlansController < ApplicationController
   def plan_params
     params.require(:plan).permit(:user_id, :situation, :perfecture_id, :start_image, :gole_image, :start, :gole, :start_introduction, :gole_introduction, :minutes, :attention,
                                   ##planでrelayのカラムを保存するための記述
-                                  relays_attributes:[:reley_point, :point_introduction, :image, :travel_time, :travel_attention, :_destroy])
+                                  relays_attributes:[:relay_point, :point_introduction, :image, :travel_time, :travel_attention, :_destroy])
   end
 end
 
