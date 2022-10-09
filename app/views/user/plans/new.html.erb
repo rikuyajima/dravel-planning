@@ -1,82 +1,81 @@
-<div class="d-flex align-items-center">
-  <div class="container">
-   <div class="row ml-4">
-    <div class="col-9 px-0 mt-3 ml-4">
-      <h4 class="mb-4"><strong>あなたのプランをみんなにシェアしよう！</strong></h4>
-      <div class="shadow-lg px-5 py-5">
-      <%= form_with model: @plan, local:true do |f| %>
-        <table class="table pl-5">
-          <tr>
-            <th>スタート地点の都道府県</th>
-            <th><%= f.collection_select :perfecture_id, Perfecture.all, :id, :name, {include_blank: '--選択してください--'} %></th>
-          </tr>
-          <tr>
-            <th>おすすめのシチュエーション</th>
-            <th><%= f.select :situation,Plan.situations.keys, class: "form-control situation" %></th>
-          </tr>
-          <tr>
-            <th>スタート地点</th>
-            <th><%= f.text_field :start, class: "form-control start" %></th>
-          </tr>
-          <tr>
-            <th>現地の写真</th>
-            <th><%= f.file_field :start_image, class: "form-control-file image", accept: 'image/*' %></th>
-          </tr>
-          <tr>
-            <th>おすすめポイント！</th>
-            <th><%= f.text_area :start_introduction, class: "form-control introduction" %></th>
-          </tr>
-          <tr>
-            <th>次のポイントまでの移動時間</th>
-            <th>約<%= f.select :minutes,*[1..59], class: "form-control minutes" %>分</th>
-          </tr>
-          <tr>
-            <th>道中気をつけた方がいい事やおすすめのルートがあれば教えてあげましょう！</th>
-            <th><%= f.text_area :attention, class: "form-control introduction" %></th>
-          </tr>
-            <div class="add-botton-box">
-              <tr>
-                <th>
-                  <%= link_to_add_association "+中継スポットを追加", f, :relays,
-                  data: {
-                  association_insertion_node: '#detail-association-insertion-point',
-                  association_insertion_method: 'after'
-                  }%>
-                </th>
-              </tr>
+<div class="container">
+   <div class="mx-auto">
+     <div class="text-left">
+      <div class="col-9 px-0 mt-3 ml-4">
+      <h4 class="mb-4"><strong>投稿内容編集</strong></h4>
+        <div class="shadow-lg px-5 py-5">
+          <%= form_with model: @plan do |f| %>
+
+          <div class="plan_form">
+            おすすめのシチュエーション</th>
+            <%= f.select :situation,Plan.situations.keys, class: "form-control situation" %>
+          </div>
+            <div class="area">
+              <div class="area_space">
+                <div class="plan_form">
+                  スタート地点の都道府県
+                  <%= f.collection_select :perfecture_id, Perfecture.all, :id, :name, {include_blank: '--選択してください--'} %>
+                </div>
+
+                <div>スタート地点 <i class="fa-solid fa-car-side"></i></div>
+                <div class="plan_form"><%= f.text_field :start, class: "form-control start" %></div>
+
+                <div>現地の写真 <i class="fa-regular fa-image"></i></div>
+                <div class="plan_form"><%= f.file_field :start_image, class: "form-control-file image", accept: 'image/*' %></div>
+
+                <div>おすすめポイント！</div>
+                <div class="plan_form"><%= f.text_area :start_introduction, class: "form-control introduction" %></div>
+
+                <div class="plan_form">
+                  次のポイントまでの移動時間:約<%= f.select :minutes,*[1..59], class: "form-control minutes" %>分
+                </div>
+
+                <div>移動中気をつけた方がいい事やおすすめのルートがあれば教えてあげましょう！</div>
+                <div class="plan_form"><%= f.text_area :attention, class: "form-control introduction" %></div>
+              </div>
+           </div>
+
+          <div class="add-botton-box">
+            <div class="area_space">
+             <div class="plan_form">
+                <%= link_to_add_association "+中継スポットを追加", f, :relays,
+                data: {
+                association_insertion_node: '#detail-association-insertion-point',
+                association_insertion_method: 'after'
+                }%>
+              </div>
             </div>
-          <tr>
-            <th><div id="detail-association-insertion-point"></div></th>
-          </tr>
-              <tr>
-                <th>
-                  <%= f.fields_for :relays do |t| %>
-                  <%= render "user/plans/relay_fields", f: t %>
-                  <% end %>
-                </th>
-              </tr>
-          <tr>
-            <th>ゴール地点</th>
-            <th><%= f.text_field :gole, class: "form-control start" %></th>
-          </tr>
-          <tr>
-            <th>現地の写真</th>
-            <th class="field">
-            <%= f.file_field :gole_image, class: "form-control-file image", accept: 'image/*' %>
-            </th>
-          </tr>
-          <tr>
-            <th>おすすめポイント！</th>
-            <th><%= f.text_area :gole_introduction, class: "form-control introduction" %></th>
-          </tr>
-          <tr>
-            <th><%= f.submit '新規登録', class: "button" %></th>
-          </tr>
-        </table>
+          </div>
+          <div class="area">
+            <div class="area_space">
+              <div class="plan_form">
+                <div id="detail-association-insertion-point"></div>
+              </div>
+            </div>
+          </div>
+          <!--追加された中継地点を編集できる-->
+              <%= f.fields_for :relays do |t| %>
+              <%= render "user/plans/relay_fields", f: t %>
+              <% end %>
+
+          <div class="area">
+            <div class="area_space">
+              <div>ゴール地点</div>
+              <div class="plan_form"><%= f.text_field :gole, class: "form-control start" %></div>
+
+              <div>現地の写真</div>
+              <div class="plan_form"><%= f.file_field :gole_image, class: "form-control-file image", accept: 'image/*' %></div>
+
+              <div>おすすめポイント！</div>
+              <div class="plan_form"><%= f.text_area :gole_introduction, class: "form-control introduction" %></div>
+            </div>
+          </div>
+
+           <div class="edit_btn"><%= f.submit '新規登録', class: "button" %></div>
+        </div>
       <% end %>
       </div>
     </div>
-   </div>
   </div>
 </div>
 

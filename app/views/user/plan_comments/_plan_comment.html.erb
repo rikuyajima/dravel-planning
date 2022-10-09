@@ -1,12 +1,13 @@
 <% plan.plan_comments.each do |plan_comment| %>
-  <table>
-    <tr>
-      <td><%= image_tag plan_comment.user.get_profile_image(100,100) %></td>
-      <td><%= plan_comment.user.name %></td>
-      <td><%= plan_comment.created_at.strftime('%Y/%m/%d') %><%= plan_comment.comment %></td>
+    <div class="area_space">
+     <div class="area">
+      <%= image_tag plan_comment.user.get_profile_image.variant(resize: '50x50') %>
+      <%= plan_comment.user.name %></td>
+      <%= plan_comment.created_at.strftime('%Y/%m/%d') %>
+      <div><%= plan_comment.comment %></div>
       <% if plan_comment.user == current_user %>
-      <td><%= link_to "Destroy", plan_plan_comment_path(plan_comment.plan_id, plan_comment), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"} %></td>
+      <%= link_to "消去する", plan_plan_comment_path(plan_comment.plan_id, plan_comment), method: :delete, remote: true, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger" %>
       <% end %>
-    </tr>
-  </table>
+     </div>
+    </div>
 <% end %>

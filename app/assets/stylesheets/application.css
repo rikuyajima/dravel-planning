@@ -16,23 +16,54 @@
 
  .button {
   display       : inline-block;
-  font-size     : 14pt;       
-  text-align    : center;      
-  cursor        : pointer;     
-  padding       : 10px 13px;  
-  background    : #000000;     
-  color         : #ffffff;     
-  line-height   : 1em;         
-  transition    : .3s;        
-  box-shadow    : 2px 2px 4px #666666; 
-  border        : 2px solid #000000;  
+  font-size     : 14pt;
+  text-align    : center;
+  cursor        : pointer;
+  padding       : 10px 13px;
+  background    : #000000;
+  color         : #ffffff;
+  line-height   : 1em;
+  transition    : .3s;
+  box-shadow    : 2px 2px 4px #666666;
+  border        : 2px solid #000000;
 }
 .button:hover {
-  box-shadow    : none;       
-  color         : #000000; 
-  background    : #ffffff;  
+  box-shadow    : none;
+  color         : #000000;
+  background    : #ffffff;
 }
 
 .user-icon{
   border-radius: 50%;
+}
+
+.plan_form {
+  margin-bottom: 10px
+}
+
+.area{
+  border-bottom:solid
+#cccccc 2px;
+}
+
+.area_space{
+  margin: 20px 0;
+}
+
+.space{
+  margin-left: 20px
+}
+
+.edit_btn{
+  margin-top: 20px
+}
+
+p {
+  width: 200px;
+  word-break: break-word;
+  margin-left: 20px
+}
+
+.attention{
+  width: 350px
 }

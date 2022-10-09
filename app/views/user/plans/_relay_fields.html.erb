@@ -1,24 +1,17 @@
 <div class="nested-fields">
-  <th>中継スポット名</th>
-    <th><%= f.text_field :relay_point, class: "form-control start" %></th>
-  </tr>
-  <tr>
-    <th>現地の写真</th>
-    <th><%= f.file_field :image, class: "form-control-file image", accept: 'image/*' %></th>
-  </tr>
-  <tr>
-    <th>おすすめポイント！</th>
-    <th><%= f.text_area :point_introduction, class: "form-control point_introduction" %></th>
-  </tr>
-  <tr>
-    <th>次のポイントまでの移動時間</th>
-    <th>約<%= f.select :travel_time,*[1..59], class: "form-control travel_time" %>分</th>
-  </tr>
-  <tr>
-    <th>道中気をつけた方がいい事やおすすめのルートがあれば教えてあげましょう！</th>
-    <th><%= f.text_area :travel_attention, class: "form-control travel_attention" %></th>
-  </tr>
-  <tr>
-    <th><%= link_to_remove_association "削除", f, class: "btn btn-secondary btn-block" %></th>
-  </tr>
+    <div>中継スポット名</div>
+    <div class="plan_form"><%= f.text_field :relay_point, class: "form-control start" %></div>
+
+    <div>現地の写真</th>
+    <div class="plan_form"><%= f.file_field :image, class: "form-control-file image", accept: 'image/*' %></div>
+
+    <div>おすすめポイント！</th>
+    <div class="plan_form"><%= f.text_area :point_introduction, class: "form-control point_introduction" %></div>
+
+    <div class="plan_form">次のポイントまでの移動時間：約<%= f.select :travel_time,*[1..59], class: "form-control travel_time" %>分</div>
+
+    <div>道中気をつけた方がいい事やおすすめのルートがあれば教えてあげましょう！</th>
+    <div class="plan_form"><%= f.text_area :travel_attention, class: "form-control travel_attention" %></div>
+
+    <div><%= link_to_remove_association "中継ポイントを削除", f, class: "btn btn-secondary btn-block" %></div>
 </div>

@@ -55,7 +55,7 @@ class User::PlansController < ApplicationController
   def plan_params
     params.require(:plan).permit(:user_id, :situation, :perfecture_id, :start_image, :gole_image, :start, :gole, :start_introduction, :gole_introduction, :minutes, :attention,
                                   ##planでrelayのカラムを保存するための記述
-                                  relays_attributes:[:relay_point, :point_introduction, :image, :travel_time, :travel_attention, :_destroy])
+                                  relays_attributes:[:id, :relay_point, :point_introduction, :image, :travel_time, :travel_attention, :_destroy])
   end
 end
 
