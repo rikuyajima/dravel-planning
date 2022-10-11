@@ -24,8 +24,8 @@
       <td><%= plan.start %></td>
       <td><i class="fa-solid fa-arrow-right"></i></td>
       <td><%= plan.gole %></td>
-      <td></td>
-      <td></td>
+      <td><i class="fa-regular fa-star"></i><%= plan.favorites.count %></td>
+      <td><i class="fa-solid fa-pen-to-square"></i><%= plan.plan_comments.count %></td>
       <td><%= link_to "詳細情報", plan_path(plan.id) %></td>
     <% end %>
   </tbody>

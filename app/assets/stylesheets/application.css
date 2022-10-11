@@ -67,3 +67,7 @@ p {
 .attention{
   width: 350px
 }
+
+ul {
+  list-style: none;
+}

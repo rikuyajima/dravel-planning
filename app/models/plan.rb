@@ -2,19 +2,24 @@ class Plan < ApplicationRecord
   has_one_attached :image
   has_one_attached :start_image
   has_one_attached :gole_image
+  
   belongs_to :perfecture
   belongs_to :user
   has_many :relays, inverse_of: :plan, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :favorited_posts, through: :favorites, source: :post
+  has_many :favorited_users, through: :favorites, source: :user
   has_many :plan_comments, dependent: :destroy
+  has_many :view_counts, dependent: :destroy
+  
+  validates :start, presence: true, length: { maximum: 30 }
+  validates :gole, presence: true, length: { maximum: 30 }
   validates :start_introduction, {length: {maximum: 140}}
   validates :start_introduction, {length: {maximum: 140}}
    ##cocoonを導入。relayを保存する
   accepts_nested_attributes_for :relays, allow_destroy: true
 
   enum situation: {ーーーー:0, 家族でドライブ:1, 友達とドライブ:2, デート:3, 誰とでも楽しめる:4, 一人で楽しみたい:5}
-  
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end

@@ -1,19 +1,42 @@
-<div class="container">
-   <div class="row ml-4">
-    <div class="col-md-8 col-md-offset-2">
-      <h2>Dravel planningへようこそ！</h2>
-      <span>あなたのドライブプランをみんなとシェアしましょう</span>
-    </div>
-   </div>
-</div>
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-2'>
       <%= render 'user/plans/perfecture', perfectures: @perfectures%>
     </div>
     <div class='col-md-10 '>
-      <h2>みんなの投稿</h2>
-       <%= render 'user/plans/index', perfectures: @perfectures%>
+      <h2>お気に入り登録ランキングTOP10<i class="fa-solid fa-crown"></i></h2>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th><i class="fa-solid fa-crown"></i></th>
+            <th>投稿者 <i class="fa-solid fa-user"></i></th>
+            <th>都道府県 <i class="fa-sharp fa-solid fa-map-pin"></i></th>
+            <th>スタート <i class="fa-solid fa-car-side"></i></th>
+            <th></th>
+            <th>ゴール <i class="fa-solid fa-flag-checkered"></i></th>
+            <th>お気に入り数 <i class="fa-solid fa-star"></i></th>
+            <th>詳細 <i class="fa-regular fa-map"></i></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @plans.each.with_index(1) do |plan, i| %>
+          <tr>
+            <td>第<%= i %>位</td>
+            <td>
+                <%= link_to(plan.user) do %>
+                <%= image_tag plan.user.get_profile_image.variant(resize: '70x70') %>
+                <% end %>
+                <%= plan.user.name %>
+            </td>
+            <td><%= plan.perfecture.name %></td>
+            <td><%= plan.start %></td>
+            <td><i class="fa-solid fa-arrow-right"></i></td>
+            <td><%= plan.gole %></td>
+            <td><i class="fa-regular fa-star"></i><%= plan.favorites.count %></td>
+            <td><%= link_to "詳細情報", plan_path(plan.id) %></td>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
