@@ -4,8 +4,20 @@
       <%= render 'user/plans/perfecture', perfectures: @perfectures%>
     </div>
     <div class='col-md-10 '>
+      <div class="text-center">
       <h2>みんなの投稿</h2>
-      <%= render 'user/plans/index', plans: @plans%>
+      <!--タブ切り替え機能-->
+      <div class="tab">
+          <input type="radio" name="tab" id="meat1" checked>
+          <label for="meat1">新着投稿一覧</label>
+          <input type="radio" name="tab" id="meat2">
+          <label for="meat2">お気に入り登録昇順</label>
+       <div class="foods">
+          <div><%= render 'user/plans/index', plans: @plans %></div>
+          <div><%= render 'user/plans/index', plans: @favorites %></div>
+       </div>
+       </div>
+       </div>
     </div>
   </div>
 </div>

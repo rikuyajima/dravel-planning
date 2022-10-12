@@ -13,7 +13,7 @@
   <tbody>
     <% plans.each do |plan| %>
     <tr>
-      <td>
+      <td class="text-left">
           <%= link_to(plan.user) do %>
           <%= image_tag plan.user.get_profile_image.variant(resize: '70x70') %>
           <% end %>

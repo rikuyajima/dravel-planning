@@ -16,24 +16,25 @@
           <% end %>
        </div>
 
-       <ul class="tab-list list-unstyled">
-        <li class="tab tab-active">
-          投稿履歴
-        </li>
-        <li class="tab">
-          お気に入り一覧
-        </li>
-       </ul>
-
-       <div class="tabbox-contents">
-         <div class="tabbox box-show">
-           <%= render 'user/plans/index', plans: @plans %>
-         </div>
-         <div class="tabbox">
-           <%= render 'user/plans/index', plans: @favorites %>
-         </div>
+       <div class="tab">
+          <input type="radio" name="tab" id="meat1" checked>
+          <label for="meat1">投稿履歴一覧</label>
+          <input type="radio" name="tab" id="meat2">
+          <label for="meat2">お気に入り一覧</label>
+       <div class="foods">
+          <div><%= render 'user/plans/index', plans: @plans %></div>
+          <div><%= render 'user/plans/index', plans: @favorites %></div>
        </div>
-    </div>
+       </div>
+     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
 
