@@ -23,7 +23,7 @@
             <tr>
               <td>
                   <%= link_to(plan.user) do %>
-                  <%= image_tag plan.user.get_profile_image(50,50) %>
+                  <%= image_tag plan.user.get_profile_image.variant(resize: '70x70') %>
                   <% end %>
                   <%= plan.user.name %>
               </td>

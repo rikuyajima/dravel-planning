@@ -4,7 +4,7 @@
        <div class="rounded-circle">
           <%= link_to image_tag(@user.get_profile_image.variant(resize: '200x200'), class:"user-icon"), "#" %>
        </div>
-       <div class="user_name">
+       <div class="area_space">
           <%= @user.name %>
        </div>
        <div class="profile">
@@ -12,10 +12,28 @@
        </div>
        <div class="edit_profile">
           <% if @user == current_user %>
-          <%= link_to "編集する", edit_user_path(@user) %>
+          <%= link_to "編集する", edit_user_path(@user), class:"btn btn-sm btn-success" %>
           <% end %>
        </div>
-     </div>
+
+       <ul class="tab-list list-unstyled">
+        <li class="tab tab-active">
+          投稿履歴
+        </li>
+        <li class="tab">
+          お気に入り一覧
+        </li>
+       </ul>
+
+       <div class="tabbox-contents">
+         <div class="tabbox box-show">
+           <%= render 'user/plans/index', plans: @plans %>
+         </div>
+         <div class="tabbox">
+           <%= render 'user/plans/index', plans: @favorites %>
+         </div>
+       </div>
+    </div>
   </div>
 </div>
 

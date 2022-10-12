@@ -16,6 +16,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resource :favorites, only: [:create, :destroy]
     end
     resources :users, only: [:index, :show, :edit, :update]
+    get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
     resources :perfectures, only: [:show]
   end
 

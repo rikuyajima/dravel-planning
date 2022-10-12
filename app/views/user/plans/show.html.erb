@@ -7,9 +7,6 @@
         <%= link_to "消去する", plan_path(@plan), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger" %>
       </div>
       <% end %>
-      <div class="area_space">
-        👀数: <%= @plan.view_counts.count %>
-      </div>
        <!--スタート地点を表示-->
       <div class="area_space">
         投稿者：<%= image_tag @plan.user.get_profile_image.variant(resize: '70x70') %><%= @plan.user.name %>

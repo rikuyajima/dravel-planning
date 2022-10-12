@@ -3,6 +3,8 @@ class User::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @plans = @user.plans
+    favorites = Favorite.where(user_id: @user.id).pluck(:plan_id)
+    @favorites = Plan.find(favorites)
   end
 
   def edit
@@ -22,6 +24,15 @@ class User::UsersController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  #退会機能
+  def withdrawal
+    @user = User.find(params[:id])
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
 
   private

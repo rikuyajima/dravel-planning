@@ -22,5 +22,10 @@ class User < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
   end
+  
+  #退会後同じアカウントでログインできないようにする
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 end
 
