@@ -66,3 +66,5 @@ gem "cocoon"
 gem 'rmagick'
 
 gem 'ransack'
+
+gem 'kaminari'

@@ -3,6 +3,7 @@ class User::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @plans = @user.plans
+    #idに紐づくユーザーがお気に入り登録した情報のみを集める
     favorites = Favorite.where(user_id: @user.id).pluck(:plan_id)
     @favorites = Plan.find(favorites)
   end

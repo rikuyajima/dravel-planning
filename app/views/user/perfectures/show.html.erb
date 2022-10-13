@@ -4,40 +4,25 @@
       <%= render "user/plans/perfecture", perfectures: @perfectures %>
     </div>
     <div class='col-md-10'>
-      <h4 class="mt-5"><strong><%= @perfecture.name %>のプラン一覧</strong></h4>
-        <table class="table table-success table-striped">
-          <thead>
-            <tr>
-              <th>投稿者</th>
-              <th>都道府県</th>
-              <th>スタート</th>
-              <th></th>
-              <th>ゴール</th>
-              <th>お気に入り数</th>
-              <th>コメント数</th>
-              <th>詳細情報</th>
-            </tr>
-          </thead>
-            <% @perfecture.plans.each do |plan| %>
-          <tbody>
-            <tr>
-              <td>
-                  <%= link_to(plan.user) do %>
-                  <%= image_tag plan.user.get_profile_image.variant(resize: '70x70') %>
-                  <% end %>
-                  <%= plan.user.name %>
-              </td>
-              <td><%= plan.perfecture.name %></td>
-              <td><%= plan.start %></td>
-              <td><i class="fa-duotone fa-arrow-right"></i></td>
-              <td><%= plan.gole %></td>
-              <td></td>
-              <td></td>
-              <td><%= link_to "詳細情報", plan_path(plan.id) %></td>
-            </tr>
-          <% end %>
-         </tbody>
-      </table>
+      <div class="text-center">
+        <h4><%= @perfecture.name %>の投稿一覧</h4>
+        <div class="tab">
+            <input type="radio" name="tab" id="meat1" checked>
+            <label for="meat1">投稿一覧</label>
+            <input type="radio" name="tab" id="meat2">
+            <label for="meat2">お気に入り一覧</label>
+         <div class="foods">
+            <div>
+              <span>投稿一覧</span>
+              <%= render 'user/perfectures/index', perfecture: @perfecture %>
+            </div>
+            <div>
+              <span>お気に入り数順</span>
+              <%= render 'user/perfectures/favorites', favorites: @favorites %>
+            </div>
+         </div>
+       </div>
+      </div>
     </div>
   </div>
 </div>

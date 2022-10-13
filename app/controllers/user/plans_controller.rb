@@ -15,11 +15,10 @@ class User::PlansController < ApplicationController
     end
   end
 
-
   def index
     @plans = Plan.all.order(created_at: :desc)
-    @perfectures = Perfecture.all.order(created_at: :desc)
     @favorites = Plan.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    @perfectures = Perfecture.all
   end
 
   def show

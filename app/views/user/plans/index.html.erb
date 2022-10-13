@@ -13,8 +13,14 @@
           <input type="radio" name="tab" id="meat2">
           <label for="meat2">お気に入り登録昇順</label>
        <div class="foods">
-          <div><%= render 'user/plans/index', plans: @plans %></div>
-          <div><%= render 'user/plans/index', plans: @favorites %></div>
+          <div>
+            <span>新着順</span>
+            <%= render 'user/plans/index', plans: @search_plans %>
+          </div>
+          <div>
+            <span>お気に入り順</span>
+            <%= render 'user/plans/index', plans: @favorites %>
+          </div>
        </div>
        </div>
        </div>
