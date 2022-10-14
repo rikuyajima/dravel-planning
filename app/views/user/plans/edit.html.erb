@@ -9,7 +9,7 @@
 
           <div class="plan_form">
             おすすめのシチュエーション</th>
-            <%= f.select :situation,Plan.situations.keys, class: "form-control situation" %>
+            <%= f.select :situation, ['家族でドライブ', '一人で楽しみたい', '友達とドライブ', 'デート', '誰とでも楽しめる'], {include_blank: '選択ボックス'}, class: 'sample' %>
           </div>
             <div class="area">
               <div class="area_space">

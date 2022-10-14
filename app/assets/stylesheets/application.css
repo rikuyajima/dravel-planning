@@ -58,8 +58,8 @@
   margin-top: 20px
 }
 
-p {
-  width: 200px;
+.introduction {
+  width: 250px;
   word-break: break-word;
   margin-left: 20px
 }
