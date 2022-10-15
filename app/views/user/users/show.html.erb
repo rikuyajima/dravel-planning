@@ -2,7 +2,9 @@
    <div class="mx-auto">
      <div class="text-center">
        <div class="rounded-circle">
-          <%= link_to image_tag(@user.get_profile_image.variant(resize: '200x200'), class:"user-icon"), "#" %>
+        <% if @user.get_profile_image.present? %>
+          <%= link_to image_tag(@user.get_profile_image, size: '200x200', class:"user-icon") %>
+        <% end %>
        </div>
        <div class="area_space">
           <%= @user.name %>
@@ -13,8 +15,13 @@
        <div class="edit_profile">
           <% if @user == current_user %>
           <%= link_to "編集する", edit_user_path(@user), class:"btn btn-sm btn-success" %>
-          <% end %>
        </div>
+       <div class="edit_profile">
+          <% elsif admin_signed_in? %>
+          <%= link_to "退会させる", withdrawal_path(@user), method: :patch, data: { confilm: "本当に退会させますか？" }, class:"btn btn-sm btn-danger" %>
+       </div>
+          <% else %>
+          <% end %>
 
        <div class="tab">
           <input type="radio" name="tab" id="meat1" checked>

@@ -6,6 +6,11 @@
         <%= link_to "投稿内容を編集する", edit_plan_path(@plan), class:"btn btn-sm btn-success" %>
         <%= link_to "消去する", plan_path(@plan), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger" %>
       </div>
+      　<% elsif admin_signed_in? %>
+      <div class="text-right">
+        <%= link_to "消去する", plan_path(@plan), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger" %>
+      </div>
+        <% else %>
       <% end %>
        <!--スタート地点を表示-->
       <div class="area_space">

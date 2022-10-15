@@ -63,8 +63,6 @@ gem "enum_help"
 
 gem "cocoon"
 
-gem 'rmagick'
-
 gem 'ransack'
 
 gem 'kaminari'

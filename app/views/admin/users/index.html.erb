@@ -9,7 +9,7 @@
               <th>投稿者情報 <i class="fa-solid fa-user"></i></th>
               <th>会員登録日 <i class="fa-solid fa-calendar-days"></i></th>
               <th>会員詳細 <i class="fa-regular fa-map"></i></th>
-              <th>投稿id</th>
+              <th>会員ステータス</th>
             </tr>
           </thead>
           <tbody>
@@ -22,7 +22,14 @@
               </td>
               <td><%= user.created_at %></td>
               <td><%= link_to "詳細情報", user_path(user.id) %></td>
-              <td><%=  %></td>
+              <td class = "border-bottom">
+              <% if user.is_deleted? %>
+              <span>退会</span>
+              <% else %>
+              <span>入会中</span>
+              <% end %>
+              </td>
+            </tr>
             <% end %>
           </tbody>
         </table>

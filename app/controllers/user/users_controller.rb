@@ -30,7 +30,7 @@ class User::UsersController < ApplicationController
   #退会機能
   def withdrawal
     @user = User.find(params[:id])
-    @user.update(is_deleted: true)
+    i@user.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
