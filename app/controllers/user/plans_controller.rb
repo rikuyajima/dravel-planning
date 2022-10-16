@@ -48,7 +48,11 @@ class User::PlansController < ApplicationController
   def destroy
     @plan = Plan.find(params[:id])
     @plan.destroy
-    redirect_to '/plans'
+    if user_signed_in?
+      redirect_to '/plans'
+    else
+      redirect_to '/admin/plans'
+    end
   end
 
   private

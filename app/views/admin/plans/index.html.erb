@@ -2,32 +2,7 @@
   <div class='row'>
     <div class='col-md-12 '>
       <h3>管理者投稿一覧ページ</h3>
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>投稿者id</th>
-              <th>投稿者情報 <i class="fa-solid fa-user"></i></th>
-              <th>投稿日 <i class="fa-solid fa-calendar-days"></i></th>
-              <th>投稿id</th>
-              <th>投稿詳細 <i class="fa-regular fa-map"></i></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @plans.each do |plan| %>
-            <tr>
-              <td><%= plan.user.id %></td>
-              <td>
-                  <%= link_to(plan.user) do %>
-                  <%= image_tag plan.user.get_profile_image.variant(resize: '50x50') %>
-                  <% end %>
-                  <%= plan.user.name %>
-              </td>
-              <td><%= plan.created_at %></td>
-              <td><%= plan.id %></td>
-              <td><%= link_to "詳細情報", plan_path(plan.id) %></td>
-            <% end %>
-          </tbody>
-        </table>
+        <%= render 'admin/plans/index', plans: @plans %>
     </div>
   </div>
 </div>

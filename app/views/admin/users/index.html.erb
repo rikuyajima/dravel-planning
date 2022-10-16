@@ -2,37 +2,7 @@
   <div class='row'>
     <div class='col-md-12 '>
       <h3>管理者会員一覧ページ</h3>
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>会員id</th>
-              <th>投稿者情報 <i class="fa-solid fa-user"></i></th>
-              <th>会員登録日 <i class="fa-solid fa-calendar-days"></i></th>
-              <th>会員詳細 <i class="fa-regular fa-map"></i></th>
-              <th>会員ステータス</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @users.each do |user| %>
-            <tr>
-              <td><%= user.id %></td>
-              <td>
-                  <%= image_tag user.get_profile_image.variant(resize: '50x50') %>
-                  <%= user.name %>
-              </td>
-              <td><%= user.created_at %></td>
-              <td><%= link_to "詳細情報", user_path(user.id) %></td>
-              <td class = "border-bottom">
-              <% if user.is_deleted? %>
-              <span>退会</span>
-              <% else %>
-              <span>入会中</span>
-              <% end %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
+       <%= render 'admin/users/index', users: @users %>
     </div>
   </div>
 </div>

@@ -26,14 +26,19 @@ class User::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   #退会機能
   def withdrawal
     @user = User.find(params[:id])
-    i@user.update(is_deleted: true)
-    reset_session
-    flash[:notice] = "退会処理を実行いたしました"
-    redirect_to root_path
+    @user.update(is_deleted: true)
+     if user_signed_in?
+      reset_session
+      flash[:notice] = "退会処理を実行いたしました"
+      redirect_to root_path
+     else
+      flash[:notice] = "退会処理を実行いたしました"
+      redirect_to '/admin/users'
+     end
   end
 
   private

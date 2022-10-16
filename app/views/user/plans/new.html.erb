@@ -8,23 +8,23 @@
           <%= form_with model: @plan do |f| %>
 
           <div class="plan_form">
-            おすすめのシチュエーション</th>
-            <%= f.select :situation, ['家族でドライブ', '一人で楽しみたい', '友達とドライブ', 'デート', '誰とでも楽しめる'], {include_blank: '--選択してください--'}, class: 'sample' %>
+            おすすめのシチュエーション
+            <%= f.select :situation, ['家族でドライブ', '一人で楽しみたい', '友達とドライブ', 'デート', '誰とでも楽しめる'], {include_blank: '--選択してください--'}, class: 'sample' %>　※入力必須
           </div>
             <div class="area">
               <div class="area_space">
                 <div class="plan_form">
                   スタート地点の都道府県
-                  <%= f.collection_select :perfecture_id, Perfecture.all, :id, :name, {include_blank: '--選択してください--'} %>
+                  <%= f.collection_select :perfecture_id, Perfecture.all, :id, :name, {include_blank: '--選択してください--'} %>　※入力必須
                 </div>
 
-                <div>スタート地点 <i class="fa-solid fa-car-side"></i></div>
+                <div>スタート地点 <i class="fa-solid fa-car-side"></i>　※入力必須</div>
                 <div class="plan_form"><%= f.text_field :start, class: "form-control start" %></div>
 
                 <div>現地の写真 <i class="fa-regular fa-image"></i></div>
                 <div class="plan_form"><%= f.file_field :start_image, class: "form-control-file image", accept: 'image/*' %></div>
 
-                <div>おすすめポイント！</div>
+                <div>おすすめポイント！※入力必須</div>
                 <div class="plan_form"><%= f.text_area :start_introduction, class: "form-control introduction" %></div>
 
                 <div class="plan_form">
@@ -61,13 +61,13 @@
 
           <div class="area">
             <div class="area_space">
-              <div>ゴール地点</div>
+              <div>ゴール地点　※入力必須</div>
               <div class="plan_form"><%= f.text_field :gole, class: "form-control start" %></div>
 
               <div>現地の写真</div>
               <div class="plan_form"><%= f.file_field :gole_image, class: "form-control-file image", accept: 'image/*' %></div>
 
-              <div>おすすめポイント！</div>
+              <div>おすすめポイント！　※入力必須</div>
               <div class="plan_form"><%= f.text_area :gole_introduction, class: "form-control introduction" %></div>
             </div>
           </div>

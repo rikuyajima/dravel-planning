@@ -4,11 +4,10 @@ class ApplicationController < ActionController::Base
 
   def search
     @search = Plan.ransack(params[:q])
-    @search_plans = @search.result.page(params[:page]).per(20).order(created_at: :desc)
-
-    @range = params[:range]
-
+    @search_plans = @search.result.includes(:perfecture).page(params[:page]).per(20).order(created_at: :desc)
+    @search_perfecture = Perfecture.all
   end
+  
 
   protected
 

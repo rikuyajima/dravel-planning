@@ -13,6 +13,15 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
   validates :profile, length: { maximum: 200 }
 
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @search_users = User.where("name or id LIKE?", "#{word}")
+    elsif search == "partial_match"
+      @search_users = User.where("name or id LIKE?","%#{word}%")
+    else
+      @search_users = User.all
+    end
+  end
 
   def get_profile_image
     if profile_image.attached?

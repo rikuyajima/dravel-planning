@@ -18,6 +18,16 @@ class Plan < ApplicationRecord
    ##cocoonを導入。relayを保存する
   accepts_nested_attributes_for :relays, allow_destroy: true
 
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @search_plans = Plan.where("id or start or gole LIKE?","#{word}")
+    elsif search == "partial_match"
+      @search_plans = Plan.where("id or start or gole or name LIKE?","%#{word}%")
+    else
+      @search_plans = Plan.all
+    end
+  end
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end

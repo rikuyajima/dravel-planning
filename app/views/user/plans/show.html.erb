@@ -53,7 +53,11 @@
         <div class="area_space">
           <h5>移動中の注意点 <i class="fa-solid fa-triangle-exclamation"></i><h5>
         </div>
+        <% if @plan.attention.present? %>
         <p class="attention"><%= @plan.attention %></p>
+        <% else %>
+        <p>データがありません</p>
+        <% end %>
       </div>
     </div>
 
@@ -93,7 +97,11 @@
         <div class="area_space">
           <h5>移動中の注意点 <i class="fa-solid fa-triangle-exclamation"></i><h5>
         </div>
+        <% if relay.travel_attention.present? %>
         <p class="attention"><%= relay.travel_attention %></p>
+        <% else %>
+        <p>データがありません</p>
+        <% end %>
       </div>
     </div>
 
@@ -124,7 +132,7 @@
   </div>
 </div>
 
-
+<%if user_signed_in? %>
 <!--お気に入り・コメント機能-->
 <div class="container">
    <div class="mx-auto">
@@ -132,19 +140,19 @@
         <!--お気に入りボタン-->
        <div class="d-flex justify-content-center">
         <div class="favorite_buttons_<%= @plan.id %>">
-          <div class="area_space">
+          <div>
            <%= render 'user/favorites/favorite', plan: @plan %>
           </div>
         </div>
-        <div class="area_space">｜</div>
-        <div class="area_space">
+        <div>｜</div>
+        <div>
           <div><%= @plan.plan_comments.count %>件のコメント｜</div>
         </div>
        </div>
      </div>
    </div>
 </div>
-
+<% end %>
 <div class="container">
    <div class="mx-auto">
      <div class="text-center">

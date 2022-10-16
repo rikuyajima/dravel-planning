@@ -25,5 +25,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :users, only: [:index, :show]
     resources :plans, only: [:index, :show]
     resources :perfectures, only: [:index, :create]
+    get 'admin/searches/search' => 'searches#search', as: 'search'
   end
 end
