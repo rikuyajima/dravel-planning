@@ -24,5 +24,12 @@
         </div>
         <%= yield %>
       <main>
+        <footer class="fixed-bottom" style="background-color:#004400">
+          <div class = "text-center" >
+    	      <%= link_to new_plan_path,class: 'nav-link text-light' do %>
+            <i class="fa-solid fa-pen-to-square"></i> 新規投稿
+            <% end %>
+          </div>
+       </footer>
   </body>
 </html>

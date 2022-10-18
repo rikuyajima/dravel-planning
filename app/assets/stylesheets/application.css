@@ -102,3 +102,15 @@ ul {
 .searchimage{
   margin-bottom: 1px
 }
+
+.box_space{
+  margin: 5px 0;
+}
+
+.toukou_form{
+  margin: 2px 2px;
+  border: 1px solid #FFFFFF;
+  background-color: #00CCFF;
+  border-radius : 5%;
+}
+

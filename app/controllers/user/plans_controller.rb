@@ -16,7 +16,7 @@ class User::PlansController < ApplicationController
   end
 
   def index
-    @plans = Plan.all.order(created_at: :desc)
+    @plans = Plan.all.order(created_at: :desc).page(params[:page]).per(20).order(created_at: :desc)
     @favorites = Plan.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
     @perfectures = Perfecture.all
   end

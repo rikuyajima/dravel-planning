@@ -2,10 +2,10 @@
   <nav class="navbar navbar-expand-lg" style="background-color:#004400">
     <div class = "col-4 text-center" >
       <%= link_to root_path do %>
-      <%= image_tag 'icon.png', size: "210x170" %>
+      <%= image_tag 'icon.png', size: "205x155" %>
       <% end %>
     </div>
-
+    <!--管理者側のヘッダー-->
     <% if admin_signed_in? %>
     <div class = "col-4 text-center" >
       <!--検索機能-->
@@ -32,7 +32,7 @@
           <%= image_tag 'log_out.png', size: "110x30" %>
           <% end %>
       </div>
-
+    <!--会員側のヘッダー-->
     <% elsif user_signed_in? %>
     <div class = "col-4 text-center" >
       <!--検索機能-->
@@ -40,7 +40,7 @@
         <div class="d-flex justify-content-center">
           <div class="searchimage"><%= image_tag 'search.jpg', size: "27x27" %></div><%= f.text_field :start_or_gole_cont %>
         </div>
-        <div>
+        <div class="box_space">
           <%= f.select :situation_eq, ['家族でドライブ', '一人で楽しみたい', '友達とドライブ', 'デート', '誰とでも楽しめる'], {include_blank: 'シチュエーションを絞り込む'} %>
         </div>
         <div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
@@ -49,10 +49,13 @@
         <div class="text-white" id="open" style="display:none;clear:both;">
           <%= f.collection_check_boxes :perfecture_id, search_perfecture, :id, :name %>
         </div>
-      <%= f.submit "検索" %>
+        <div class="box_space">
+          <%= f.submit "検索" %>
+        </div>
       <% end %>
     </div>
-      <div class="col-4 d-flex justify-content-right">
+      <div class="col-4 text_center">
+       <div class="d-flex justify-content-right">
         <!--マイページ-->
           <%= link_to user_path(current_user.id),class: 'nav-link text-light' do %>
           <%= image_tag 'my_page.png', size: "110x30" %>
@@ -65,9 +68,10 @@
           <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
           <%= image_tag 'log_out.png', size: "110x30" %>
           <% end %>
+       </div>
       </div>
 
-
+    <!--非ログイン時のヘッダー-->
     <% else %>
       <div class = "col-4 text-center" >
         <span class="text-white">会員登録をすると様々な機能を使うことができます！</span>
