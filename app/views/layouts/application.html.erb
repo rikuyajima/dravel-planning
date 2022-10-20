@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Reizouko</title>
+    <title>Dravel</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <script src="https://kit.fontawesome.com/ecbd652d7d.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
@@ -24,12 +24,5 @@
         </div>
         <%= yield %>
       <main>
-        <footer class="fixed-bottom" style="background-color:#004400">
-          <div class = "text-center" >
-    	      <%= link_to new_plan_path,class: 'nav-link text-light' do %>
-            <i class="fa-solid fa-pen-to-square"></i> 新規投稿
-            <% end %>
-          </div>
-       </footer>
   </body>
 </html>

@@ -38,7 +38,7 @@
       <!--検索機能-->
       <%= search_form_for search, url: plans_path do |f| %>
         <div class="d-flex justify-content-center">
-          <div class="searchimage"><%= image_tag 'search.jpg', size: "27x27" %></div><%= f.text_field :start_or_gole_cont %>
+          <div class="searchimage"><%= image_tag 'search.jpg', size: "27x29" %></div><%= f.text_field :start_or_gole_cont %>
         </div>
         <div class="box_space">
           <%= f.select :situation_eq, ['家族でドライブ', '一人で楽しみたい', '友達とドライブ', 'デート', '誰とでも楽しめる'], {include_blank: 'シチュエーションを絞り込む'} %>

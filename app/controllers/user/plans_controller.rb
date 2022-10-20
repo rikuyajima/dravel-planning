@@ -23,6 +23,9 @@ class User::PlansController < ApplicationController
 
   def show
     @plan = Plan.find(params[:id])
+    unless ViewCount.find_by(user_id: current_user.id, plan_id: @plan.id)
+      current_user.view_counts.create(plan_id: @plan.id)
+    end
     @comment = PlanComment.new
   end
 

@@ -1,6 +1,7 @@
 <div class="container">
    <div class="mx-auto">
      <div class="text-center">
+       <p class="view-count">足跡<i class="fa-solid fa-shoe-prints"></i>: <%= @plan.view_counts.count %></p>
        <% if @plan.user == current_user %>
       <div class="text-right">
         <%= link_to "投稿内容を編集する", edit_plan_path(@plan), class:"btn btn-sm btn-success" %>
