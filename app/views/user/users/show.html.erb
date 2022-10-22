@@ -14,7 +14,9 @@
        </div>
        <div class="edit_profile">
           <% if @user == current_user %>
-          <%= link_to "編集する", edit_user_path(@user), class:"btn btn-sm btn-success" %>
+            <% if @user.name != "guestuser" %>
+            <%= link_to "編集する", edit_user_path(@user), class:"btn btn-sm btn-success" %>
+            <% end %>
        </div>
        <div class="edit_profile">
           <% elsif admin_signed_in? %>
