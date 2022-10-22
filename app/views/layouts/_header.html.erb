@@ -1,12 +1,14 @@
 <header class="shadow-sm">
   <nav class="navbar navbar-expand-lg" style="background-color:#004400">
-    <div class = "col-4 text-center" >
+    <div class = "col-2 text-center" >
       <%= link_to root_path do %>
       <%= image_tag 'icon.png', size: "205x155" %>
       <% end %>
     </div>
     <!--管理者側のヘッダー-->
     <% if admin_signed_in? %>
+    <div class = "col-2 text-center" >
+    </div>
     <div class = "col-4 text-center" >
       <!--検索機能-->
       <div class="search_form">
@@ -34,6 +36,11 @@
       </div>
     <!--会員側のヘッダー-->
     <% elsif user_signed_in? %>
+    <div class = "col-2 text-center" >
+      <%= link_to new_plan_path,class: 'nav-link text-light' do %>
+      <i class="fa-solid fa-pen-to-square"></i> <%= image_tag 'new_plan.png', size: "110x30" %>
+      <% end %>
+    </div>
     <div class = "col-4 text-center" >
       <!--検索機能-->
       <%= search_form_for search, url: plans_path do |f| %>
@@ -73,6 +80,8 @@
 
     <!--非ログイン時のヘッダー-->
     <% else %>
+    <div class = "col-2 text-center" >
+    </div>
       <div class = "col-4 text-center" >
         <span class="text-white">会員登録をすると様々な機能を使うことができます！</span>
       </div>

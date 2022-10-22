@@ -3,12 +3,12 @@
      <div class="text-center">
        <p class="view-count">足跡<i class="fa-solid fa-shoe-prints"></i>: <%= @plan.view_counts.count %></p>
        <% if @plan.user == current_user %>
-      <div class="text-right">
+      <div>
         <%= link_to "投稿内容を編集する", edit_plan_path(@plan), class:"btn btn-sm btn-success" %>
         <%= link_to "消去する", plan_path(@plan), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger" %>
       </div>
       　<% elsif admin_signed_in? %>
-      <div class="text-right">
+      <div>
         <%= link_to "消去する", plan_path(@plan), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger" %>
       </div>
         <% else %>
