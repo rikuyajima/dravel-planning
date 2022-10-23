@@ -114,3 +114,54 @@ ul {
   border-radius : 5%;
 }
 
+.midasi{
+  display: flex;
+  background-image: url("top_img.jpg");
+  background-position:center top;
+  background-size:cover;
+  text-align:  center;
+  vertical-align: middle;
+  background-color:rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
+  width:100%;
+  height:700px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.midasi_text{
+  border:  solid 2px;
+  display:  inline-block;
+  padding: 5px 10px;
+  margin: 5px 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.midasi_login{
+  border:  solid 2px;
+  border-color: #00BFFF;
+  display:  inline-block;
+  padding: 5px 10px;
+  margin: 5px 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.midasi_signup{
+  border:  solid 2px;
+  border-color: #00EE00;
+  display:  inline-block;
+  padding: 5px 10px;
+  margin: 5px 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.welcome{
+  margin-bottom: 5px;
+}
+
+.link {
+    text-decoration: none;
+    color: #000000;
+}
