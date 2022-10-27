@@ -54,7 +54,7 @@
           <a class="text-white" style="cursor:pointer;">▼ 都道府県から絞り込み</a>
         </div>
         <div class="text-white" id="open" style="display:none;clear:both;">
-          <%= f.collection_check_boxes :perfecture_id, search_perfecture, :id, :name %>
+          <%= f.collection_check_boxes :perfecture_id_in, search_perfecture, :id, :name, include_hidden: false %>
         </div>
         <div class="box_space">
           <%= f.submit "検索" %>
