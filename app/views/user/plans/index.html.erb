@@ -22,11 +22,11 @@
           <label for="meat2">お気に入り登録昇順</label>
        <div class="plans">
           <div>
-            <span>新着順</span>
+            <h4>新着順:<%= @count %>件ヒット</h4>
             <%= render 'user/plans/index', plans: @search_plans %>
           </div>
           <div>
-            <span>お気に入り順</span>
+            <h4>お気に入り順:<%= @count %>件ヒット</h4>
             <%= render 'user/plans/index', plans: @favorites %>
           </div>
        </div>

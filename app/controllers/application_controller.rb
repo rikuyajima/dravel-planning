@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
     @search = Plan.ransack(params[:q])
     @search_plans = @search.result.includes(:perfecture).page(params[:page]).per(20).order(created_at: :desc)
     @search_perfecture = Perfecture.all
+    @count = @search_plans.total_count
   end
 
   protected
