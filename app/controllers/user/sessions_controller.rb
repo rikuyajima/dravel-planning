@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+  before_action :reject_user, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -25,22 +25,21 @@ class User::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  def reject_user
-    @user = User.find_by(name: params[:user][:name])
-    if @user
-      if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == false)
-        flash[:notice] = "退会済みです。再度ご登録をお願いいたします。"
-        redirect_to new_user_registration
-      else
-        flash[:notice] = "項目を入力してください"
-      end
-    end
-  end
-
   def guest_sign_in
     user = User.guest
     sign_in user
     redirect_to user_path(user), notice: 'guestuserでログインしました。'
+  end
+
+  private
+
+  def reject_user
+    @user = User.find_by(email: params[:user][:email])
+    if @user
+      if @user.valid_password?(params[:user][:password]) && @user.is_deleted
+        redirect_to new_user_session_path, notice: "退会済みです。再度ご登録をお願いいたします。"
+      end
+    end
   end
 
   def after_sign_in_path_for(resource)
