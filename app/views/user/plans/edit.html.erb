@@ -25,14 +25,14 @@
                 <div class="plan_form"><%= f.file_field :start_image, class: "form-control-file image", accept: 'image/*' %></div>
 
                 <div>おすすめポイント！</div>
-                <div class="plan_form"><%= f.text_area :start_introduction, class: "form-control introduction" %></div>
+                <div class="plan_form"><%= f.text_area :start_introduction, class: "form-control" %></div>
 
                 <div class="plan_form">
                   次のポイントまでの移動時間:約<%= f.select :minutes,*[1..59], class: "form-control minutes" %>分
                 </div>
 
                 <div>移動中気をつけた方がいい事やおすすめのルートがあれば教えてあげましょう！</div>
-                <div class="plan_form"><%= f.text_area :attention, class: "form-control introduction" %></div>
+                <div class="plan_form"><%= f.text_area :attention, class: "form-control" %></div>
               </div>
            </div>
 
@@ -74,7 +74,7 @@
               <div class="plan_form"><%= f.file_field :gole_image, class: "form-control-file image", accept: 'image/*' %></div>
 
               <div>おすすめポイント！</div>
-              <div class="plan_form"><%= f.text_area :gole_introduction, class: "form-control introduction" %></div>
+              <div class="plan_form"><%= f.text_area :gole_introduction, class: "form-control" %></div>
             </div>
           </div>
 
