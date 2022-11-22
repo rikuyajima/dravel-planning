@@ -20,8 +20,8 @@
 *目的地についたはいいけど時間が余ってしまったとき
 
 ## 設計書
-- https://app.diagrams.net/#G1ztRvu3TGhiyBzMvNVLuxtpMSSQIGZRs3
-- 
+- ER図[https://app.diagrams.net/#G1ztRvu3TGhiyBzMvNVLuxtpMSSQIGZRs3]
+- テーブル定義書[https://docs.google.com/spreadsheets/d/1RlZUzvnrFinjnzwTGx3CTHV9EJkRHZCXoswOMKEq0Xg/edit#gid=949703410]
 
 ## 開発環境
 - OS：Linux(CentOS)
