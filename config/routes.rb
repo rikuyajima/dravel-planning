@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-# ユーザー用
 devise_for :users, controllers: {
   registrations: "user/registrations",
   sessions: 'user/sessions'
@@ -9,7 +8,7 @@ devise_scope :user do
   post 'users/guest_sign_in', to: 'user/sessions#guest_sign_in'
 end
 
-# 管理者用
+
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
@@ -20,7 +19,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       resources :plan_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:show, :edit, :update]
       get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
       patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
       resources :perfectures, only: [:show]
