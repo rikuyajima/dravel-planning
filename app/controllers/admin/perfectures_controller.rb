@@ -12,6 +12,25 @@ class Admin::PerfecturesController < ApplicationController
       render :index
     end
   end
+  
+  def edit
+     @perfecture = Perfecture.find(params[:id])
+  end
+  
+  def update
+    @perfecture = Perfecture.find(params[:id])
+    if @perfecture.update(perfecture_params)
+      flash[:notice] = "修正が正常に完了しました。"
+       redirect_to perfectures_path
+    else
+       render :edit
+    end
+  end
+
+  def destroy
+    @perfecture = Perfecture.find(params[:id])
+    @perfecture.destroy
+  end
 
     private
 

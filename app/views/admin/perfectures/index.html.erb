@@ -22,6 +22,9 @@
               <td>
                 <%= perfecture.name %>
               </td>
+              <td>
+                <%= link_to "編集する", edit_admin_perfecture_path(perfecture.id) %>
+              </td>
             </tr>
           <% end %>
         </tbody>
