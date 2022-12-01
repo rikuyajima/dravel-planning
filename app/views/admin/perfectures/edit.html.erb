@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-7 mx-auto">
+      <h4 class="m-3"><strong>都道府県名編集</strong></h4>
+      <%= form_with model: @perfecture, url: admin_perfecture_path, method: :patch do |f| %>
+        <p class="my-5 mx-2">都道府県名
+          <%= f.text_field :name, class: "mx-2" %>
+          <%= f.submit '変更', class: "btn btn-success mx-2" %>
+      <% end %>
+          <%= link_to "消去する", admin_perfecture_path(@perfecture), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger" %>
+       </p>
+    </div>
+  </div>
+</div>

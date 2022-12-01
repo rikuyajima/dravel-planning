@@ -1,5 +1,14 @@
 class Admin::UsersController < ApplicationController
+ before_action :admin_scan, only: [:index]
   def index
     @users = User.all
+  end
+  
+ private
+  
+  def admin_scan
+   unless admin_signed_in?
+     redirect_to root_path
+   end
   end
 end

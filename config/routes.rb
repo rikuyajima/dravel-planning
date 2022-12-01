@@ -29,7 +29,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :admin do
     resources :users, only: [:index, :show]
     resources :plans, only: [:index, :show]
-    resources :perfectures, only: [:index, :create]
+    resources :perfectures, only: [:index, :create, :edit, :update, :destroy]
     get 'admin/searches/search' => 'searches#search', as: 'search'
   end
 end
