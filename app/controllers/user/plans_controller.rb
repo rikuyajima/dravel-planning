@@ -23,8 +23,10 @@ class User::PlansController < ApplicationController
 
   def show
     @plan = Plan.find(params[:id])
-    unless ViewCount.find_by(user_id: current_user.id, plan_id: @plan.id)
-      current_user.view_counts.create(plan_id: @plan.id)
+    if user_signed_in?
+      unless ViewCount.find_by(user_id: current_user.id, plan_id: @plan.id)
+        current_user.view_counts.create(plan_id: @plan.id)
+      end
     end
     @comment = PlanComment.new
   end
