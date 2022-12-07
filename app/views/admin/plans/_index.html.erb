@@ -19,7 +19,7 @@
           <% end %>
           <%= plan.user.name %>
       </td>
-      <td><%= plan.created_at %></td>
+      <td><%= plan.created_at.to_s(:datetime_jp) %></td>
       <td><%= plan.id %></td>
       <td><%= link_to "詳細情報", plan_path(plan.id) %></td>
     <% end %>

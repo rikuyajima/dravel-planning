@@ -17,7 +17,7 @@
           <%= image_tag user.get_profile_image.variant(resize: '50x50') %>
           <%= user.name %>
       </td>
-      <td><%= user.created_at %></td>
+      <td><%= user.created_at.to_s(:datetime_jp) %></td>
       <td><%= link_to "詳細情報", user_path(user.id) %></td>
       <td class = "border-bottom">
       <% if user.is_deleted? %>
