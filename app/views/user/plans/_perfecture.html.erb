@@ -1,7 +1,26 @@
 <table class="perfecture-table table table-bordered table-hover">
   <thead class="perfecture">
     <tr>
-      <th class="active table-active">都道府県検索</th>
+      <th class="active table-active">新規投稿</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to 'プランを投稿', new_plan_path, class:"ec-genre-list-item text-dark" %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to 'スポットを投稿', new_spot_path, class:"ec-genre-list-item text-dark" %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="perfecture-table table table-bordered table-hover">
+  <thead class="perfecture">
+    <tr>
+      <th class="active table-active">都道府県別プラン</th>
     </tr>
   </thead>
   <tbody>

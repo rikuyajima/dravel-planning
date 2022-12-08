@@ -1,2 +1,23 @@
-<h1>User::Spots#show</h1>
-<p>Find me in app/views/user/spots/show.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-2'>
+      <div class="spotname"><%= render 'user/plans/perfecture', perfectures: @perfectures%></div>
+    </div>
+  <div class="col-10">
+    <h3 class="spotname"><strong><i class="fa-solid fa-map"></i> <%= @spot.address%></strong></h3>
+  <div class="row">
+      <% @spot.images.each do |image| %>
+      <div class="images">
+      <div class="col-2">
+        <%= image_tag image, width: 200, height: 150 %>
+      </div>
+      </div>
+      <% end %>
+    </div>
+   </div>
+  </div>
+</div>
+
+
+
+

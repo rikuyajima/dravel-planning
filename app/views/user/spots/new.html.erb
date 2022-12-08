@@ -1,0 +1,28 @@
+<%= render 'layouts/error_messages', obj: @spot %>
+<div class="container">
+   <div class="mx-auto">
+      <div class="col-10">
+      <h4 class="mb-4"><strong>プラン新規投稿</strong></h4>
+        <div class="shadow-lg px-5 py-5">
+          <%= form_with model: @spot do |f| %>
+            <div class="area">
+              <div class="area_space">
+                <div class="plan_form">
+                  スポットの都道府県
+                  <%= f.collection_select :perfecture_id, Perfecture.all, :id, :name, {include_blank: '--選択してください--'} %>　※入力必須
+                </div>
+                <div>スポット名　※入力必須</div>
+                <div class="plan_form"><%= f.text_field :address, class: 'form-control' %></div>
+
+                <div>現地の写真(必ず１枚写真を投稿してください＊最大４枚) <i class="fa-regular fa-image"></i></div>
+                <div class="plan_form"><%= f.file_field :images, multiple: true, class: "form-control-file image", accept: 'image/*' %></div>
+
+                <div class="edit_btn"><%= f.submit '投稿', class: "button" %></div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

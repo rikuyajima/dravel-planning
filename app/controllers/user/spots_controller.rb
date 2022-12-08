@@ -5,22 +5,25 @@ class User::SpotsController < ApplicationController
   end
 
   def create
-    @spot = Spot.new(plan_params)
+    @spot = Spot.new(spot_params)
     @spot.user_id = current_user.id
     if @spot.save
       flash[:notice] = "投稿しました。"
-      redirect_to plans_path
+      redirect_to spots_path
     else
       render :new
     end
   end
-  
+
   def index
-    @spots = Spot.all.order(created_at: :desc).page(params[:page]).per(20).order(created_at: :desc)
+    @spots = Spot.all.order(created_at: :desc).page(params[:page]).per(12).order(created_at: :desc)
+    @perfectures = Perfecture.all
   end
 
   def show
     @spot = Spot.find(params[:id])
+    @perfectures = Perfecture.all
+    @comment = PlanComment.new
   end
 
   def edit
@@ -31,7 +34,7 @@ class User::SpotsController < ApplicationController
     redirect_to spots_path
     end
   end
-  
+
   def update
     @spot = Spot.find(params[:id])
     if @spot.update(spot_params)
@@ -55,6 +58,6 @@ class User::SpotsController < ApplicationController
   private
 
   def spot_params
-    params.require(:spot).permit(:user_id)
+    params.require(:spot).permit(:address, :name, :perfecture_id, images: [])
   end
 end

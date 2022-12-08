@@ -37,9 +37,6 @@
     <!--会員側のヘッダー-->
     <% elsif user_signed_in? %>
     <div class = "col-2 text-center" >
-      <%= link_to new_plan_path,class: 'nav-link text-light' do %>
-      <i class="fa-solid fa-pen-to-square"></i> <%= image_tag 'new_plan.png', size: "110x30" %>
-      <% end %>
     </div>
     <div class = "col-4 text-center" >
       <!--検索機能-->

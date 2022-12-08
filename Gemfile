@@ -75,3 +75,6 @@ gem "net-pop"
 gem "net-imap"
 
 gem 'rename'
+
+gem 'gmaps4rails'
+gem 'geocoder'
