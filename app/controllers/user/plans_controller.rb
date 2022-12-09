@@ -28,6 +28,7 @@ class User::PlansController < ApplicationController
         current_user.view_counts.create(plan_id: @plan.id)
       end
     end
+    @perfectures = Perfecture.all
     @comment = PlanComment.new
   end
 

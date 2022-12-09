@@ -78,3 +78,4 @@ gem 'rename'
 
 gem 'gmaps4rails'
 gem 'geocoder'
+

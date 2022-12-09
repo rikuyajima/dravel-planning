@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_posts, through: :favorites, source: :post
   has_many :plan_comments, dependent: :destroy
+  has_many :spot_comments, dependent: :destroy
   has_many :view_counts, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 20 }

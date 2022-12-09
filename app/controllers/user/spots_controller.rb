@@ -23,7 +23,7 @@ class User::SpotsController < ApplicationController
   def show
     @spot = Spot.find(params[:id])
     @perfectures = Perfecture.all
-    @comment = PlanComment.new
+    @comment = SpotComment.new
   end
 
   def edit

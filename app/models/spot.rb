@@ -2,6 +2,7 @@ class Spot < ApplicationRecord
   has_many_attached :images
   belongs_to :perfecture
   belongs_to :user
+  has_many :spot_comments, dependent: :destroy
   validates :address, presence: true
   validate :image_length
 

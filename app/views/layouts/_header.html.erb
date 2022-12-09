@@ -37,6 +37,9 @@
     <!--会員側のヘッダー-->
     <% elsif user_signed_in? %>
     <div class = "col-2 text-center" >
+      <%= link_to user_path(current_user.id),class: 'nav-link text-light' do %>
+      <%= image_tag 'my_page.png', size: "110x30" %>
+      <% end %>
     </div>
     <div class = "col-4 text-center" >
       <!--検索機能-->
@@ -61,8 +64,8 @@
       <div class="col-4 text_center">
        <div class="d-flex justify-content-right">
         <!--マイページ-->
-          <%= link_to user_path(current_user.id),class: 'nav-link text-light' do %>
-          <%= image_tag 'my_page.png', size: "110x30" %>
+          <%= link_to spots_path,class: 'nav-link text-light' do %>
+          <%= image_tag 'spot_all.png', size: "120x40" %>
           <% end %>
         <!--プラン一覧-->
           <%= link_to plans_path,class: 'nav-link text-light' do %>
