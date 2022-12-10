@@ -17,12 +17,21 @@
     </tr>
   </tbody>
 </table>
+
+<div onclick="obj=document.getElementById('perfecturelist').style; obj.display=(obj.display=='none')?'block':'none';">
+  <table class="perfecture-table table table-bordered table-hover">
+    <thead class="perfecture">
+      <tr>
+        <th class="active table-active">
+          <a style="cursor:pointer;">都道府県別プラン</a>
+        </th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<div id="perfecturelist" style="display:none;clear:both;">
 <table class="perfecture-table table table-bordered table-hover">
-  <thead class="perfecture">
-    <tr>
-      <th class="active table-active">都道府県別プラン</th>
-    </tr>
-  </thead>
   <tbody>
     <% perfectures.each do |perfecture| %>
     <tr>
@@ -33,3 +42,4 @@
     <% end %>
   </tbody>
 </table>
+</div>

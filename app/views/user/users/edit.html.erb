@@ -1,33 +1,27 @@
-<%= render 'layouts/error_messages', obj: @user %>
-<div class="d-flex align-items-center">
-  <div class="container">
-   <div class="row ml-4">
-    <div class="col-9 px-0 mt-3 ml-4">
+<div class="container">
+   <div class="mx-auto">
+      <div class="col-12">
       <h4 class="mb-4"><strong>ユーザー情報編集</strong></h4>
-        <div class="shadow-lg px-5 py-5">
+        <div class="shadow-lg px-4 py-4">
           <%= form_with model: @user do |f| %>
-            <table class="table pl-5">
-              <tr>
-                <th>プロフィール写真を選択</th>
-                <th><%= f.file_field :profile_image, class: "form-control-file image", accept: 'image/*' %></th>
-              </tr>
-              <tr>
-                <th>アカウントネーム</th>
-                <th><%= f.text_field :name, class: "form-control name" %></th>
-              </tr>
-              <tr>
-                <th>自己紹介</th>
-                <th><%= f.text_area :profile, class: "form-control name" %></th>
-              </tr>
-              <tr>
-                <th><%= f.submit '更新する', class: "button" %></th>
-              </tr>
-            </table>
+          <%= render 'layouts/error_messages', obj: @user %>
+            <div class="area">
+              <div class="area_space">
+                <div>プロフィール写真を選択</div>
+                <div class="plan_form"><%= f.file_field :profile_image, class: "form-control-file image", accept: 'image/*' %></div>
+
+                <div>アカウントネーム</div>
+                <div class="plan_form"><%= f.text_field :name, class: "form-control name" %></div>
+
+                <div>自己紹介</div>
+                <div class="plan_form"><%= f.text_area :profile, class: "form-control name" %></div>
+
+                <div class="edit_btn"><%= f.submit '更新する', class: "button" %></div>
+              </div>
+            </div>
           <% end %>
-          <%= link_to "退会する", unsubscribe_path(@user) %>
         </div>
       </div>
     </div>
   </div>
 </div>
-

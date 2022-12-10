@@ -1,17 +1,17 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-2'>
+    <div class='col-lg-2 col-xs-10'>
       <%= render 'user/plans/perfecture', perfectures: @perfectures%>
     </div>
-      <div class="col-10">
+      <div class='col-lg-10 col-xs-10'>
         <h3><strong>スポット一覧</strong></h3>
         <div class="row">
           <% @spots.each do |spot| %>
-            <div class="col-3">
+            <div class='col-lg-3 col-xs-10'>
               <%= link_to spot_path(spot.id) do %>
-                <%= image_tag spot.images[0], size: '200x150' %>
+                <%= image_tag spot.images[0], size: '200x150' %><br>
               <% end %>
-                <%= spot.perfecture.name %>:<%= spot.address %><br>
+                <%= spot.perfecture.name %>:<%= spot.address %>
             </div>
           <% end %>
         </div>

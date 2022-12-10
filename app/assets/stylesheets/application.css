@@ -181,3 +181,32 @@ ul {
 .spotname{
   padding-top: 10px;
 }
+
+.repoint {
+    display: flex;
+  }
+
+.headerpoint {
+    display: flex;
+    align-items: flex-end;
+  }
+
+.item {
+    display: flex;
+    align-items: center;
+  }
+
+
+@media screen and (max-width:576px) {
+  .repoint {
+    display: block;
+  }
+  .headerpoint {
+    display: block;
+    margin:auto;
+
+  }
+  .item {
+    display: block;
+  }
+}

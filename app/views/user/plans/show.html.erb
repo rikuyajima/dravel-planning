@@ -8,12 +8,14 @@
 <div class="text-center">
 <div class='container'>
   <div class='row'>
-    <div class='col-md-2'>
+    <div class='col-lg-2 col-xs-10'>
       <div class="spotname"><%= render 'user/plans/perfecture', perfectures: @perfectures%></div>
     </div>
-    <div class="col-10">
+
+    <div class='col-lg-10 col-xs-10'>
   <div class="row">
-    <div class="col-7">
+    <div class="repoint">
+    <div class='col-lg-7 col-xs-10'>
       <% if @plan.user == current_user %>
          <p class="view-count">足跡<i class="fa-solid fa-shoe-prints"></i>: <%= @plan.view_counts.count %></p>
          <div>
@@ -103,7 +105,7 @@
     </div>
 
     <%if user_signed_in? %>
-    <div class='col-3'>
+    <div class='col-lg-3 col-xs-10'>
       <div class="d-flex justify-content-center">
         <div class="favorite_buttons_<%= @plan.id %>">
           <div>

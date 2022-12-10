@@ -18,5 +18,14 @@
   </div>
 </div>
 
+<div class="d-flex justify-content-center">
+        <div class="new-comment" style="width: 400px;#">
+           <%= render 'user/spot_comments/form', spot: @spot, spot_comment: @comment %>
+        </div>
+      </div>
+      <!--コメント一覧-->
+        <div class="comments_area">
+           <%= render 'user/spot_comments/spot_comment', spot: @spot %>
+        </div>
 
 
