@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_09_014322) do
+ActiveRecord::Schema.define(version: 2022_12_11_045956) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -109,8 +109,8 @@ ActiveRecord::Schema.define(version: 2022_12_09_014322) do
   create_table "spots", force: :cascade do |t|
     t.integer "user_id"
     t.string "address"
-    t.float "latitude"
-    t.float "longitude"
+    t.float "lat"
+    t.float "lng"
     t.integer "perfecture_id"
     t.integer "status"
     t.datetime "created_at", precision: 6, null: false

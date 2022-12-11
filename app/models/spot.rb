@@ -4,6 +4,8 @@ class Spot < ApplicationRecord
   belongs_to :user
   has_many :spot_comments, dependent: :destroy
   validates :address, presence: true
+  validates :lat, presence: true
+  validates :lng, presence: true
   validate :image_length
 
   def image_length

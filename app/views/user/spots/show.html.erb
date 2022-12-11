@@ -1,31 +1,77 @@
-<div class='container px-5 px-sm-0'>
+<div class="container">
+  <div class="mx-auto">
+    <div>
+      <p id="notice" class="text-center"><%= notice %></p>
+    </div>
+  </div>
+</div>
+<div class='container'>
   <div class='row'>
     <div class='col-md-2'>
       <div class="spotname"><%= render 'user/plans/perfecture', perfectures: @perfectures%></div>
     </div>
-  <div class="col-10">
-    <h3 class="spotname"><strong><i class="fa-solid fa-map"></i> <%= @spot.address%></strong></h3>
-  <div class="row">
+  <div class='col-lg-10 col-xs-10'>
+   <div class="row">
+   <div class="repoint">
+    <div class='col-lg-7 col-xs-10'>
+      <h3 class="spotname"><strong><i class="fa-solid fa-map"></i> <%= @spot.address%></strong></h3>
+      <h4>投稿写真一覧</h4>
+    <div class="row">
       <% @spot.images.each do |image| %>
       <div class="images">
-      <div class="col-2">
+      <div class="col-lg-2 col-xs-8">
         <%= image_tag image, width: 200, height: 150 %>
       </div>
       </div>
       <% end %>
     </div>
-   </div>
-  </div>
-</div>
 
-<div class="d-flex justify-content-center">
+      <h4>位置情報</h4>
+      <div id='map'></div>
+        <style>
+        #map {
+          height: 300px;
+          width: 100%;
+        }
+        </style>
+
+        <!-- js部分 -->
+        <script>
+        //初期マップの設定
+        let map
+        let marker
+        function initMap(){
+          geocoder = new google.maps.Geocoder()
+
+          map = new google.maps.Map(document.getElementById('map'), {
+            center:  {lat: <%= @spot.lat %>, lng: <%= @spot.lng %>},
+            zoom: 15,
+          });
+
+           marker = new google.maps.Marker({
+            position:  {lat: <%= @spot.lat %>, lng: <%= @spot.lng %>},
+            map: map
+          });
+        }
+
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_vp9bwB4yneaGPjGf1kppotcC0zdTs_Q&callback=initMap" async defer></script>
+      </div>
+<div class='col-lg-3 col-xs-10'>
+    <h4>コメント覧</h4>
+    <%= render 'layouts/error_messages', obj: @comment %>
+    <div><%= @spot.spot_comments.count %>件のコメント</div>
         <div class="new-comment" style="width: 400px;#">
            <%= render 'user/spot_comments/form', spot: @spot, spot_comment: @comment %>
         </div>
-      </div>
       <!--コメント一覧-->
+      <h4>コメント一覧</h4>
         <div class="comments_area">
            <%= render 'user/spot_comments/spot_comment', spot: @spot %>
         </div>
-
-
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>

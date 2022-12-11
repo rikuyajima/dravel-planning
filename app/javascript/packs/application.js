@@ -8,7 +8,6 @@ import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-require('jquery')
 require("cocoon")
 import "jquery";
 import "popper.js";

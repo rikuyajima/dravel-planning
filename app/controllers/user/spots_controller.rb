@@ -58,6 +58,6 @@ class User::SpotsController < ApplicationController
   private
 
   def spot_params
-    params.require(:spot).permit(:address, :name, :perfecture_id, images: [])
+    params.require(:spot).permit(:address, :lat, :lng, :name, :perfecture_id, images: [])
   end
 end
