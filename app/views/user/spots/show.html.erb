@@ -14,49 +14,62 @@
    <div class="row">
    <div class="repoint">
     <div class='col-lg-7 col-xs-10'>
-      <h3 class="spotname"><strong><i class="fa-solid fa-map"></i> <%= @spot.address%></strong></h3>
-      <h4>投稿写真一覧</h4>
-    <div class="row">
-      <% @spot.images.each do |image| %>
-      <div class="images">
-      <div class="col-lg-2 col-xs-8">
-        <%= image_tag image, width: 200, height: 150 %>
-      </div>
-      </div>
+      <% if admin_signed_in? %>
+         <div>
+          <%= form_with model: @spot, url: spot_path, method: :patch, local: true do |f| %>
+          <%= f.select :status,Spot.statuses.keys %>
+          <%= f.submit "更新", class: "btn btn-success" %>
+          <% end %>
+         </div>
+         <div>
+           <%= link_to "消去する", spot_path(@spot), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger" %>
+         </div>
       <% end %>
-    </div>
+    <h3 class="spotname"><strong><i class="fa-solid fa-map"></i> <%= @spot.address%></strong></h3>
+    <div class="welcome">投稿者：<%= @spot.user.name %></div>
+      <h4>投稿写真一覧</h4>
+        <div class="row">
+          <% @spot.images.each do |image| %>
+          <div class="images">
+          <div class="col-lg-2 col-xs-8">
+            <%= image_tag image, width: 200, height: 150 %>
+          </div>
+          </div>
+          <% end %>
+        </div>
 
       <h4>位置情報</h4>
-      <div id='map'></div>
-        <style>
-        #map {
-          height: 300px;
-          width: 100%;
-        }
-        </style>
+        <div id='map'></div>
+          <style>
+            #map {
+              height: 300px;
+              width: 100%;
+            }
+          </style>
 
         <!-- js部分 -->
-        <script>
+          <script>
         //初期マップの設定
-        let map
-        let marker
-        function initMap(){
-          geocoder = new google.maps.Geocoder()
+            let map
+            let marker
+            function initMap(){
+              geocoder = new google.maps.Geocoder()
 
-          map = new google.maps.Map(document.getElementById('map'), {
-            center:  {lat: <%= @spot.lat %>, lng: <%= @spot.lng %>},
-            zoom: 15,
-          });
+              map = new google.maps.Map(document.getElementById('map'), {
+              center:  {lat: <%= @spot.lat %>, lng: <%= @spot.lng %>},
+              zoom: 15,
+            });
 
-           marker = new google.maps.Marker({
-            position:  {lat: <%= @spot.lat %>, lng: <%= @spot.lng %>},
-            map: map
-          });
-        }
+             marker = new google.maps.Marker({
+              position:  {lat: <%= @spot.lat %>, lng: <%= @spot.lng %>},
+              map: map
+            });
+          }
 
-        </script>
+          </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1QWmGKXxUGve1mxLRrJvCEJ8ypPq7nHo&callback=initMap" async defer></script>
       </div>
+
 <div class='col-lg-3 col-xs-10'>
     <h4>コメント覧</h4>
     <%= render 'layouts/error_messages', obj: @comment %>

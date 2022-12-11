@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'spots/index'
+  end
 devise_for :users, controllers: {
   registrations: "user/registrations",
   sessions: 'user/sessions'
@@ -31,6 +34,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   namespace :admin do
     resources :users, only: [:index, :show]
+    resources :spots, only: [:index, :show]
     resources :plans, only: [:index, :show]
     resources :perfectures, only: [:index, :create, :edit, :update, :destroy]
     get 'admin/searches/search' => 'searches#search', as: 'search'

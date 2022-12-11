@@ -16,7 +16,7 @@ class User::SpotsController < ApplicationController
   end
 
   def index
-    @spots = Spot.all.order(created_at: :desc).page(params[:page]).per(12).order(created_at: :desc)
+    @spots = Spot.where(status: 1).order(created_at: :desc).page(params[:page]).per(12).order(created_at: :desc)
     @perfectures = Perfecture.all
   end
 
@@ -38,8 +38,8 @@ class User::SpotsController < ApplicationController
   def update
     @spot = Spot.find(params[:id])
     if @spot.update(spot_params)
-      flash[:notice] = "投稿内容の修正が正常に完了しました。"
-       redirect_to spot_path(@spot.id)
+      flash[:notice] = "情報を更新しました。"
+       redirect_to admin_spots_path
     else
        render :edit
     end
@@ -58,6 +58,6 @@ class User::SpotsController < ApplicationController
   private
 
   def spot_params
-    params.require(:spot).permit(:address, :lat, :lng, :name, :perfecture_id, images: [])
+    params.require(:spot).permit(:address, :lat, :lng, :name, :perfecture_id, :status, images: [])
   end
 end

@@ -1,0 +1,32 @@
+ <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>投稿者情報 <i class="fa-solid fa-user"></i></th>
+      <th>スポット名</th>
+      <th>投稿日 <i class="fa-solid fa-calendar-days"></i></th>
+      <th>投稿id</th>
+      <th>審査ステータス</th>
+      <th>投稿詳細 <i class="fa-regular fa-map"></i></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if !spots.nil? %>
+    <% spots.each do |spot| %>
+    <tr>
+      <td>
+          <%= link_to(spot.user) do %>
+          <%= image_tag spot.user.get_profile_image.variant(resize: '50x50') %>
+          <% end %>
+          <%= spot.user.name %>
+      </td>
+      <td><%= spot.address %></td>
+      <td><%= spot.created_at.to_s(:datetime_jp) %></td>
+      <td><%= spot.id %></td>
+      <td><%= spot.status %></td>
+      <td><%= link_to "詳細情報", spot_path(spot.id) %></td>
+    <% end %>
+    <% else %>
+    <h4>検索結果はありませんでした。</h4>
+    <% end %>
+  </tbody>
+</table>

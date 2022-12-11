@@ -1,8 +1,8 @@
-class Admin::PlansController < ApplicationController
+class Admin::SpotsController < ApplicationController
   before_action :admin_scan, only: [:index]
 
   def index
-    @plans = Plan.all.page(params[:page]).per(10).order(created_at: :desc)
+    @spots = Spot.all.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   private
@@ -12,5 +12,4 @@ class Admin::PlansController < ApplicationController
      redirect_to root_path
    end
   end
-
 end
