@@ -25,6 +25,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       resources :spots, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resources :spot_comments, only: [:create, :destroy]
     end
+      get '/spots/:id/status' => 'spots#status', as: 'status'
       resources :users, only: [:show, :edit, :update]
       get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
       patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'

@@ -20,6 +20,12 @@ class User::SpotsController < ApplicationController
     @perfectures = Perfecture.all
   end
 
+  def status
+    @user = User.find(params[:id])
+    @spots = @user.spots.order(created_at: :desc).page(params[:page]).per(10).order(created_at: :desc)
+    @perfectures = Perfecture.all
+  end
+
   def show
     @spot = Spot.find(params[:id])
     @perfectures = Perfecture.all
@@ -47,9 +53,10 @@ class User::SpotsController < ApplicationController
 
   def destroy
     @spot = Spot.find(params[:id])
+    @user = current_user
     @spot.destroy
     if user_signed_in?
-      redirect_to '/spots'
+      redirect_to status_path(@user)
     else
       redirect_to '/admin/spots'
     end

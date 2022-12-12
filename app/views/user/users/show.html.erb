@@ -24,6 +24,7 @@
           <% if @user == current_user %>
             <% if @user.name != "guestuser" %>
             <%= link_to "編集する", edit_user_path(@user), class:"btn btn-sm btn-success" %>
+            <%= link_to "スポットの申請状況を確認する", status_path(@user), class:"btn btn-sm btn-success" %>
             <% end %>
        </div>
        <div class="edit_profile">
@@ -52,7 +53,6 @@
      </div>
   </div>
 </div>
-
 
 
 

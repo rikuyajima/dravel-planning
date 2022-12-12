@@ -1,0 +1,49 @@
+<% if @user == current_user %>
+<div class="container">
+  <div class="mx-auto">
+    <div>
+      <p id="notice" class="text-center"><%= notice %></p>
+    </div>
+  </div>
+</div>
+
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-12 '>
+      <h3>申請スポット一覧ページ</h3>
+        <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>スポット名 <i class="fa-solid fa-user"></i></th>
+      <th>投稿日 <i class="fa-solid fa-calendar-days"></i></th>
+      <th>審査ステータス</th>
+      <th>申請取下 <i class="fa-regular fa-map"></i></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if !@spots.nil? %>
+    <% @spots.each do |spot| %>
+    <tr>
+      <td><%= spot.address %></td>
+      <td><%= spot.created_at.to_s(:datetime_jp) %></td>
+      <td><%= spot.status %></td>
+      <td><%= link_to "取下", spot_path(spot.id), method: :delete, data: {confirm: "本当に取下ますか？"}, class:"btn btn-sm btn-danger" %></td>
+    <% end %>
+    <% else %>
+    <h4>検索結果はありませんでした。</h4>
+    <% end %>
+  </tbody>
+</table>
+    </div>
+  </div>
+   <div class='row'>
+    <div class='col-md-12 '>
+      <div class="text-center" ><%= paginate @spots %></div>
+    </div>
+  </div>
+</div>
+<% else %>
+  <h3>投稿した本人のみが閲覧できます。</h3>
+<% end %>
+
+
