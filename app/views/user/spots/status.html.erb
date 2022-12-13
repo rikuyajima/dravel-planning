@@ -27,7 +27,11 @@
       <td><%= spot.address %></td>
       <td><%= spot.created_at.to_s(:datetime_jp) %></td>
       <td><%= spot.status %></td>
+      <% if spot.status == "審査中" %>
       <td><%= link_to "取下", spot_path(spot.id), method: :delete, data: {confirm: "本当に取下ますか？"}, class:"btn btn-sm btn-danger" %></td>
+      <% else spot.status == '承認' %>
+      <td></td>
+      <% end %>
     <% end %>
     <% else %>
     <h4>検索結果はありませんでした。</h4>

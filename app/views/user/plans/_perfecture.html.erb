@@ -17,13 +17,19 @@
     </tr>
   </tbody>
 </table>
-
+<div class="search_form">
+  <%= form_with url: search_path, local: true, method: :get do |f| %>
+    <div class="spot_form"><%= f.text_field :word %></div>
+    <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>
 <div onclick="obj=document.getElementById('perfecturelist').style; obj.display=(obj.display=='none')?'block':'none';">
   <table class="perfecture-table table table-bordered table-hover">
     <thead class="perfecture">
       <tr>
         <th class="active table-active">
-          <a style="cursor:pointer;">都道府県別プラン</a>
+          <a style="cursor:pointer;">都道府県スポット</a>
         </th>
       </tr>
     </thead>

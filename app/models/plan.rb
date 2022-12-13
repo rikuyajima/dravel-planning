@@ -12,17 +12,18 @@ class Plan < ApplicationRecord
   has_many :view_counts, dependent: :destroy
 
   validates :start, presence: true, length: { maximum: 30 }
+  validates :situation, presence: true
   validates :gole, presence: true, length: { maximum: 30 }
-  validates :start_introduction, {length: {maximum: 140}}
-  validates :start_introduction, {length: {maximum: 140}}
+  validates :start_introduction, {presence: true, length: {maximum: 140}}
+  validates :gole_introduction, {presence: true, length: {maximum: 140}}
    ##cocoonを導入。relayを保存する
   accepts_nested_attributes_for :relays, allow_destroy: true
 
   def self.looks(search, word)
     if search == "perfect_match"
-      @search_plans = Plan.where("id or start or gole LIKE?","#{word}")
+      @search_plans = Plan.where("start LIKE?","#{word}")
     elsif search == "partial_match"
-      @search_plans = Plan.where("id or start or gole or name LIKE?","%#{word}%")
+      @search_plans = Plan.where("start LIKE?","%#{word}%")
     else
       @search_plans = Plan.all
     end

@@ -9,7 +9,7 @@ class Admin::SearchesController < ApplicationController
     elsif @range == "スポット"
       @search_spot = Spot.looks(params[:search], params[:word])
     else
-      @search_plan = Plan.looks(params[:search], params[:word]).includes(:user)
+      @search_plan = Plan.looks(params[:search], params[:word])
     end
  end
 end

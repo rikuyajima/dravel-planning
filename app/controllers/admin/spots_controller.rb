@@ -1,8 +1,14 @@
 class Admin::SpotsController < ApplicationController
-  before_action :admin_scan, only: [:index]
+  before_action :admin_scan, only: [:index, :show]
 
   def index
     @spots = Spot.all.page(params[:page]).per(10).order(created_at: :desc)
+  end
+
+  def show
+    @spot = Spot.find(params[:id])
+    @perfectures = Perfecture.all
+    @comment = SpotComment.new
   end
 
   private

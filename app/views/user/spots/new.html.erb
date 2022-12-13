@@ -15,15 +15,15 @@
                 <div>スポット名　※入力必須</div>
                 <div class="plan_form"><%= f.text_field :address, class: 'form-control' %></div>
 
-                <div>緯度経度は下の検索バーにスポット名を入力すれば自動で割り出されます。　※入力必須</div>
+                <div>緯度経度は下の検索バーから検索を行えば自動で割り出されます。　※入力必須</div>
                 <div class="repoint">
                     <div class="edit_profile">
                       <%= f.label :lat,"緯度" %>
-                      <%= f.text_field :lat,:value =>"緯度", id: :lat %>
+                      <%= f.text_field :lat, id: :lat %>
                     </div>
                     <div class="edit_profile">
                       <%= f.label :lng,"経度" %>
-                      <%= f.text_field :lng,:value =>"経度", id: :lng %>
+                      <%= f.text_field :lng, id: :lng %>
                     </div>
                   </div>
 

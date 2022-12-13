@@ -9,7 +9,7 @@ class User::SpotsController < ApplicationController
     @spot.user_id = current_user.id
     if @spot.save
       flash[:notice] = "投稿しました。"
-      redirect_to spots_path
+      redirect_to status_path(current_user)
     else
       render :new
     end
@@ -27,7 +27,8 @@ class User::SpotsController < ApplicationController
   end
 
   def show
-    @spot = Spot.find(params[:id])
+    @status = Spot.where(status: 1)
+    @spot = @status.find(params[:id])
     @perfectures = Perfecture.all
     @comment = SpotComment.new
   end

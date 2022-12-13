@@ -31,6 +31,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
       resources :perfectures, only: [:show]
       get '/plans/search' => 'plans#search', as: 'search_result'
+      get '/searches/search_spot' => 'searches#search_spot', as: 'search'
   end
 
   namespace :admin do

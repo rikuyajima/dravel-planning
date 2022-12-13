@@ -10,38 +10,33 @@
     <div class='col-md-2'>
       <div class="spotname"><%= render 'user/plans/perfecture', perfectures: @perfectures%></div>
     </div>
-  <div class='col-md-7 col-xs-10'>
+  <div class='col-lg-10 col-xs-10'>
    <div class="row">
    <div class="repoint">
-    <div class='col-md-10 col-xs-10'>
+    <div class='col-lg-7 col-xs-10'>
+      <% if admin_signed_in? %>
+         <div>
+          <%= form_with model: @spot, url: spot_path, method: :patch, local: true do |f| %>
+          <%= f.select :status,Spot.statuses.keys %>
+          <%= f.submit "更新", class: "btn btn-success" %>
+          <% end %>
+         </div>
+         <div>
+           <%= link_to "消去する", spot_path(@spot), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger" %>
+         </div>
+      <% end %>
     <h3 class="spotname"><strong><i class="fa-solid fa-map"></i> <%= @spot.address%></strong></h3>
     <div class="welcome">投稿者：<%= @spot.user.name %></div>
       <h4>投稿写真一覧</h4>
         <div class="row">
           <% @spot.images.each do |image| %>
           <div class="images">
-          <div class="col-md-2 col-xs-8">
+          <div class="col-lg-2 col-xs-8">
             <%= image_tag image, width: 200, height: 150 %>
           </div>
           </div>
           <% end %>
         </div>
-      <div onclick="obj=document.getElementById('spot_image').style; obj.display=(obj.display=='none')?'block':'none';">
-        <h4 style="cursor:pointer;">▼コメント投稿写真一覧</h4>
-      </div>
-      <div id="spot_image" style="display:none;clear:both;">
-        <div class="row">
-          <% @spot.spot_comments.each do |spot_comment| %>
-            <% spot_comment.spot_images.each do |image| %>
-              <div class="images">
-                <div class="col-lg-1 col-xs-5">
-                  <%= image_tag image, width: 100, height: 75 %>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
 
       <h4>位置情報</h4>
         <div id='map'></div>
@@ -76,21 +71,21 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1QWmGKXxUGve1mxLRrJvCEJ8ypPq7nHo&callback=initMap" async defer></script>
       </div>
 
-<div class='col-md-6 col-xs-10'>
-    <h4>コメント</h4>
+<div class='col-lg-3 col-xs-10'>
+    <h4>コメント覧</h4>
     <%= render 'layouts/error_messages', obj: @comment %>
     <div><%= @spot.spot_comments.count %>件のコメント</div>
-        <div class="new-comment" style="width: 300px;#">
+        <div class="new-comment" style="width: 400px;#">
            <%= render 'user/spot_comments/form', spot: @spot, spot_comment: @comment %>
         </div>
       <!--コメント一覧-->
-      <h5>コメント一覧</h5>
+      <h4>コメント一覧</h4>
         <div class="comments_area">
            <%= render 'user/spot_comments/spot_comment', spot: @spot %>
         </div>
-     </div>
-    </div>
    </div>
   </div>
  </div>
+</div>
+</div>
 </div>

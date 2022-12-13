@@ -99,6 +99,7 @@ ul {
   opacity:.7;
 }
 
+
 .searchimage{
   margin-bottom: 1px
 }
@@ -195,6 +196,9 @@ ul {
     display: flex;
     align-items: center;
   }
+.spot_images{
+  display: flex;
+}
 
 
 @media screen and (max-width:576px) {

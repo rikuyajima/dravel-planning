@@ -16,7 +16,7 @@ class User::SpotCommentsController < ApplicationController
   private
 
   def spot_comment_params
-    params.require(:spot_comment).permit(:comment, :rate)
+    params.require(:spot_comment).permit(:comment, :rate, spot_images: [])
   end
 end
 

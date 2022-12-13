@@ -1,28 +1,8 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-2'>
+    <div class='col-lg-2 col-xs-10'>
       <%= render "user/plans/perfecture", perfectures: @perfectures %>
     </div>
-    <div class='col-md-10'>
-      <div class="text-center">
-        <h4><%= @perfecture.name %>の投稿一覧</h4>
-        <div class="tab">
-            <input type="radio" name="tab" id="meat1" checked>
-            <label for="meat1">投稿一覧</label>
-            <input type="radio" name="tab" id="meat2">
-            <label for="meat2">お気に入り一覧</label>
-         <div class="plans">
-            <div>
-              <span>投稿一覧</span>
-              <%= render 'user/perfectures/index', perfecture: @perfecture %>
-            </div>
-            <div>
-              <span>お気に入り数順</span>
-              <%= render 'user/perfectures/favorites', favorites: @favorites %>
-            </div>
-         </div>
-       </div>
-      </div>
-    </div>
+       <%= render 'user/perfectures/index', perfecture: @perfecture %>
   </div>
 </div>

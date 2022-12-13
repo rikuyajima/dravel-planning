@@ -5,7 +5,7 @@
     <div>現地の写真</div>
     <div class="plan_form"><%= f.file_field :image, class: "form-control-file image", accept: 'image/*' %></div>
 
-    <div>おすすめポイント！　※入力必須</div>
+    <div>おすすめポイント！　※最大140字</div>
     <div class="plan_form"><%= f.text_area :point_introduction, class: "form-control point_introduction" %></div>
 
     <div class="plan_form">次のポイントまでの移動時間：約<%= f.select :travel_time,*[1..59], class: "form-control travel_time" %>分</div>

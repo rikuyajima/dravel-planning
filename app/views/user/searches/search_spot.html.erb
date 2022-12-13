@@ -1,12 +1,12 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-lg-2 col-xs-10'>
-      <%= render 'user/plans/perfecture', perfectures: @perfectures%>
+    <div class='col-md-2'>
+      <div class="spotname"><%= render 'user/plans/perfecture', perfectures: @perfectures%></div>
     </div>
       <div class='col-lg-10 col-xs-10'>
         <h3><strong>スポット一覧</strong></h3>
         <div class="row">
-          <% @spots.each do |spot| %>
+          <% @search_spots.each do |spot| %>
             <div class='col-lg-3 col-xs-10'>
               <%= link_to spot_path(spot.id) do %>
                 <%= image_tag spot.images[0], size: '200x150' %><br>
@@ -16,10 +16,5 @@
           <% end %>
         </div>
       </div>
-    </div>
-  </div>
-  <div class='row'>
-    <div class='col-md-12 '>
-      <div class="text-center" ><%= paginate @spots %></div>
     </div>
   </div>

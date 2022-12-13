@@ -24,7 +24,7 @@
                 <div>現地の写真 <i class="fa-regular fa-image"></i></div>
                 <div class="plan_form"><%= f.file_field :start_image, class: "form-control-file image", accept: 'image/*' %></div>
 
-                <div>おすすめポイント！※入力必須</div>
+                <div>おすすめポイント！※最大140字</div>
                 <div class="plan_form"><%= f.text_area :start_introduction, class: "form-control" %></div>
 
                 <div class="plan_form">
@@ -67,7 +67,7 @@
               <div>現地の写真</div>
               <div class="plan_form"><%= f.file_field :gole_image, class: "form-control-file image", accept: 'image/*' %></div>
 
-              <div>おすすめポイント！　※入力必須</div>
+              <div>おすすめポイント！　※最大140字</div>
               <div class="plan_form"><%= f.text_area :gole_introduction, class: "form-control" %></div>
             </div>
           </div>

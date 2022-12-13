@@ -35,7 +35,7 @@
       <td><%= spot.created_at.to_s(:datetime_jp) %></td>
       <td><%= spot.id %></td>
       <td><%= spot.status %></td>
-      <td><%= link_to "詳細情報", spot_path(spot.id) %></td>
+      <td><%= link_to "詳細情報", admin_spot_path(spot.id) %></td>
     <% end %>
     <% else %>
     <h4>検索結果はありませんでした。</h4>

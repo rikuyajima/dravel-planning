@@ -1,6 +1,8 @@
 class Relay < ApplicationRecord
   has_one_attached :image
   belongs_to :plan
+  validates :relay_point, presence: true, length: { maximum: 30 }
+  validates :point_introduction, {presence: true, length: {maximum: 140}}
 
   def get_image(width, height)
   unless image.attached?

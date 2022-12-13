@@ -6,6 +6,7 @@ class Spot < ApplicationRecord
   validates :address, presence: true
   validates :lat, presence: true
   validates :lng, presence: true
+  validates :images, presence: true
   validate :image_length
 
   enum status: { 審査中: 0, 承認: 1}
@@ -17,11 +18,11 @@ class Spot < ApplicationRecord
     end
   end
 
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @search_spots = Spot.where("id or address  LIKE?","#{word}")
-    elsif search == "partial_match"
-      @search_spots = Spot.where("id or address LIKE?","%#{word}%")
+  def self.looks(search_spot, word)
+    if search_spot == "perfect_match"
+      @search_spots = Spot.where("address LIKE?","#{word}")
+    elsif search_spot == "partial_match"
+      @search_spots = Spot.where("address LIKE?","%#{word}%")
     else
       @search_spots = Spot.all
     end

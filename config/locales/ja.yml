@@ -1,0 +1,27 @@
+ja:
+ activerecord:
+   attributes:
+     plan:
+       start: スタート地点
+       gole: ゴール地点
+       perfecture: 都道府県
+       situation: シチュエーション
+       start_introduction: おすすめポイント
+       gole_introduction: おすすめポイント
+     relays:
+       relay_point: 中継地点
+       point_introduction: おすすめポイント
+     spot:
+       address: 場所
+       lat: 緯度
+       lng: 経度
+       perfecture: 都道府県
+     user:
+       name: 名前
+       plofile: 自己紹介
+       email: メールアドレス
+     plan_comment:
+       comment: コメント
+     spot_comment:
+       comment: コメント
+
