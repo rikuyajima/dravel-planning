@@ -18,6 +18,13 @@
   </tbody>
 </table>
 <div class="search_form">
+  <table class="perfecture-table table table-bordered table-hover">
+    <thead class="perfecture">
+      <tr>
+        <th class="active table-active">スポット検索</th>
+      </tr>
+    </thead>
+  </table>
   <%= form_with url: search_path, local: true, method: :get do |f| %>
     <div class="spot_form"><%= f.text_field :word %></div>
     <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
