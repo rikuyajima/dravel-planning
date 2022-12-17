@@ -21,6 +21,9 @@ ja:
        name: 名前
        plofile: 自己紹介
        email: メールアドレス
+     contact:
+       subject: 件名
+       message: お問合せ内容
      plan_comment:
        comment: コメント
      spot_comment:
