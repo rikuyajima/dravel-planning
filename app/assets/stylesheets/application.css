@@ -161,6 +161,10 @@ ul {
   margin-bottom: 5px;
 }
 
+.mypage{
+  margin-left: 15px;
+}
+
 .link {
     text-decoration: none;
     color: #000000;
@@ -207,9 +211,13 @@ ul {
   .headerpoint {
     display: block;
     margin:auto;
-
   }
+
   .item {
     display: block;
+  }
+
+  .mypage{
+    margin-left: 0;
   }
 }

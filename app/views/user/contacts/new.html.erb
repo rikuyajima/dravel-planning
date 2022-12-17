@@ -1,0 +1,31 @@
+<%= render 'layouts/error_messages', obj: @contact %>
+<div class="container">
+   <div class="mx-auto">
+     <div class="text-left">
+      <div class="col-10">
+      <h4 class="mb-4"><strong>お問い合わせフォーム</strong></h4>
+        <div class="shadow-lg px-5 py-5">
+          <%= form_with model: @contact do |f| %>
+
+          <div>お問合せ種別</div>
+          <div class="plan_form">
+            <%= f.select :kinds,Contact.kinds.keys %>
+          </div>
+
+          <div>件名</div>
+          <div class="plan_form">
+            <%= f.text_field :subject, class: 'form-control' %>
+          </div>
+
+          <div>お問合せ内容</div>
+          <div class="plan_form">
+            <%= f.text_area :message, class: 'form-control' %>
+          </div>
+
+           <div class="edit_btn"><%= f.submit '送信', class: "button" %></div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

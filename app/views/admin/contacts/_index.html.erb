@@ -1,0 +1,23 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>投稿日 <i class="fa-solid fa-calendar-days"></i></th>
+      <th>件名</th>
+      <th>対応ステータス</th>
+      <th>内容詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if !contacts.nil? %>
+    <% contacts.each do |contact| %>
+    <tr>
+      <td><%= contact.created_at.to_s(:datetime_jp) %></td>
+      <td><%= contact.subject %></td>
+      <td><%= contact.contact_status %></td>
+      <td><%= link_to "詳細情報", admin_contact_path(contact.id) %></td>
+    <% end %>
+    <% else %>
+    <h4>検索結果はありませんでした。</h4>
+    <% end %>
+  </tbody>
+</table>

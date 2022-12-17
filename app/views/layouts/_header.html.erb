@@ -10,7 +10,8 @@
     </div>
     <!--管理者側のヘッダー-->
     <% if admin_signed_in? %>
-    <div class = "col-2 text-center" >
+    <div class = "col-lg-2 col-xs-12 text-center" >
+      <%= link_to 'お問合せ一覧', admin_contacts_path, class:"text-white" %>
     </div>
     <div class='col-lg-4 col-xs-12 text-center'>
       <!--検索機能-->
@@ -53,11 +54,15 @@
       </div>
     <!--会員側のヘッダー-->
     <% elsif user_signed_in? %>
+  <div class='headerpoint'>
+   <div class='mypage'>
     <div class='col-lg-2 text-center col-xs-12'>
       <%= link_to user_path(current_user.id),class: 'nav-link text-light' do %>
       <%= image_tag 'my_page.png', size: "110x30" %>
       <% end %>
     </div>
+   </div>
+  </div>
     <div class='col-lg-4 col-xs-12 text-center'>
       <!--検索機能-->
       <a class="text-white">プラン検索フォーム</a>

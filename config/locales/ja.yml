@@ -13,6 +13,7 @@ ja:
        point_introduction: おすすめポイント
      spot:
        address: 場所
+       images: 写真
        lat: 緯度
        lng: 経度
        perfecture: 都道府県

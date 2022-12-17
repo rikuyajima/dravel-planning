@@ -6,16 +6,21 @@
   </div>
 </div>
 
-<div class="container">
-   <div class="mx-auto">
-     <div class="text-center">
+<div class="text-center">
+<div class='container'>
+  <div class='row'>
+    <div class='col-lg-6 col-xs-12 text_center'>
        <div class="rounded-circle">
         <% if @user.get_profile_image.present? %>
           <%= link_to image_tag(@user.get_profile_image, size: '200x200', class:"user-icon") %>
         <% end %>
        </div>
+      </div>
+
+    <div class='col-lg-6 col-xs-12'>
+      <div class='text-left'>
        <div class="area_space">
-          <%= @user.name %>
+          name: <%= @user.name %>
        </div>
        <div class="profile">
           <%= @user.profile %>
@@ -23,8 +28,9 @@
        <div class="edit_profile">
           <% if @user == current_user %>
             <% if @user.name != "guestuser" %>
-            <%= link_to "編集する", edit_user_path(@user), class:"btn btn-sm btn-success" %>
-            <%= link_to "スポットの申請状況を確認する", status_path(@user), class:"btn btn-sm btn-success" %>
+            <div class="welcome"><%= link_to "編集する", edit_user_path(@user), class:"btn btn-sm btn-success" %></div>
+            <div class="welcome"><%= @spot.count %>件のスポットを申請中</div>
+            <div class="profile"><%= link_to "スポットの申請状況を確認する", status_path(@user), class:"btn btn-sm btn-success" %></div>
             <% end %>
        </div>
        <div class="edit_profile">
@@ -33,7 +39,16 @@
        </div>
           <% else %>
           <% end %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
 
+
+<div class="container">
+   <div class="mx-auto">
+     <div class="text-center">
        <div class="tab">
           <input type="radio" name="tab" id="meat1" checked>
           <label for="meat1">プラン投稿履歴一覧</label>

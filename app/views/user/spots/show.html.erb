@@ -1,3 +1,4 @@
+<% if @user == current_user or @spot.status == "承認" %>
 <div class="container">
   <div class="mx-auto">
     <div>
@@ -94,3 +95,6 @@
   </div>
  </div>
 </div>
+<% else %>
+<h4>お探しのスポットは審査中、または削除されています。</h4>
+<% end %>

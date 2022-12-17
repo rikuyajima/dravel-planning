@@ -17,6 +17,7 @@
       <th>スポット名 <i class="fa-solid fa-user"></i></th>
       <th>投稿日 <i class="fa-solid fa-calendar-days"></i></th>
       <th>審査ステータス</th>
+      <th>詳細リンク</th>
       <th>申請取下 <i class="fa-regular fa-map"></i></th>
     </tr>
   </thead>
@@ -27,6 +28,7 @@
       <td><%= spot.address %></td>
       <td><%= spot.created_at.to_s(:datetime_jp) %></td>
       <td><%= spot.status %></td>
+      <td><%= link_to "投稿詳細", spot_path(spot.id) %></td>
       <% if spot.status == "審査中" %>
       <td><%= link_to "取下", spot_path(spot.id), method: :delete, data: {confirm: "本当に取下ますか？"}, class:"btn btn-sm btn-danger" %></td>
       <% else spot.status == '承認' %>

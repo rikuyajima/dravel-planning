@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="mx-auto">
+    <div>
+      <p id="notice" class="text-center"><%= notice %></p>
+    </div>
+  </div>
+</div>
+
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-12 '>
+      <h3>問い合わせ一覧ページ</h3>
+        <%= render 'admin/contacts/index', contacts: @contacts %>
+    </div>
+  </div>
+   <div class='row'>
+    <div class='col-md-12 '>
+      <div class="text-center" ><%= paginate @contacts %></div>
+    </div>
+  </div>
+</div>

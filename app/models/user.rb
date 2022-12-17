@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :plan_comments, dependent: :destroy
   has_many :spot_comments, dependent: :destroy
   has_many :view_counts, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 20 }
   validates :email, presence: true

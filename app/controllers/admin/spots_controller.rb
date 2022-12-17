@@ -3,6 +3,7 @@ class Admin::SpotsController < ApplicationController
 
   def index
     @spots = Spot.all.page(params[:page]).per(10).order(created_at: :desc)
+    @spot = Spot.where(status: 0)
   end
 
   def show

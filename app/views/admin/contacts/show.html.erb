@@ -1,0 +1,37 @@
+<div class="container">
+   <div class="mx-auto">
+     <div class="text-left">
+      <div class="col-10">
+      <h4 class="mb-4"><strong>お問い合わせ詳細画面</strong></h4>
+        <div class="shadow-lg px-5 py-5">
+          <div>お問合せ種別:</div>
+          <div class="plan_form">
+            <%= @contact.kinds %>
+          </div>
+
+          <div>件名:</div>
+          <div class="plan_form">
+            <%= @contact.subject %>
+          </div>
+
+          <%= form_with model: @contact, url: contact_path, method: :patch, local: true do |f| %>
+          <div>お問合せ内容</div>
+          <div class="plan_form">
+            <%= f.text_area :message, class: 'form-control' %>
+          </div>
+
+          <div>確認ステータス</div>
+          <div class="plan_form">
+          <%= f.select :contact_status,Contact.contact_statuses.keys %>
+          </div>
+
+           <div class="edit_btn"><%= f.submit '送信', data: {confirm: "問い合わせ内容を更新します。返信内容の確認、ステータスの変更はしましたか？"}, class: "button" %></div>
+        </div>
+      <% end %>
+        <div>
+          <%= link_to "消去する", contact_path(@contact), method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-sm btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

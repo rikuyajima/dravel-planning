@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'spots/index'
-  end
+
 devise_for :users, controllers: {
   registrations: "user/registrations",
   sessions: 'user/sessions'
@@ -25,6 +23,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       resources :spots, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resources :spot_comments, only: [:create, :destroy]
     end
+      resources :contacts, only: [:new, :create, :index, :show, :update, :destroy]
       get '/spots/:id/status' => 'spots#status', as: 'status'
       resources :users, only: [:show, :edit, :update]
       get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
@@ -36,6 +35,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   namespace :admin do
     resources :users, only: [:index, :show]
+    resources :contacts, only: [:index, :show]
     resources :spots, only: [:index, :show]
     resources :plans, only: [:index, :show]
     resources :perfectures, only: [:index, :create, :edit, :update, :destroy]

@@ -8,7 +8,8 @@ class User::SpotsController < ApplicationController
     @spot = Spot.new(spot_params)
     @spot.user_id = current_user.id
     if @spot.save
-      flash[:notice] = "投稿しました。"
+      UserMailer.status_email(@spot, @user).deliver
+      flash[:notice] = "投稿しました。審査結果はご登録済みのメールアドレスに送信されます。"
       redirect_to status_path(current_user)
     else
       render :new
@@ -27,8 +28,8 @@ class User::SpotsController < ApplicationController
   end
 
   def show
-    @status = Spot.where(status: 1)
-    @spot = @status.find(params[:id])
+    @spot = Spot.find(params[:id])
+    @user = @spot.user
     @perfectures = Perfecture.all
     @comment = SpotComment.new
   end
@@ -44,7 +45,9 @@ class User::SpotsController < ApplicationController
 
   def update
     @spot = Spot.find(params[:id])
+    @user = @spot.user
     if @spot.update(spot_params)
+      UserMailer.approval_email(@spot, @user).deliver
       flash[:notice] = "情報を更新しました。"
        redirect_to admin_spots_path
     else
@@ -59,6 +62,7 @@ class User::SpotsController < ApplicationController
     if user_signed_in?
       redirect_to status_path(@user)
     else
+      UserMailer.rejected_email(@spot, @user).deliver
       redirect_to '/admin/spots'
     end
   end
