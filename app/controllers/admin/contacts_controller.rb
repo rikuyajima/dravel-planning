@@ -2,7 +2,7 @@ class Admin::ContactsController < ApplicationController
   before_action :admin_scan, only: [:index, :show]
   def index
     @contacts = Contact.all.page(params[:page]).per(10).order(created_at: :desc)
-    @spot = Spot.where(status: 0)
+    @contact = Contact.where(contact_status: 0)
   end
 
   def show

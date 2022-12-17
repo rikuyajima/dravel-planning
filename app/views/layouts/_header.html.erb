@@ -11,7 +11,6 @@
     <!--管理者側のヘッダー-->
     <% if admin_signed_in? %>
     <div class = "col-lg-2 col-xs-12 text-center" >
-      <%= link_to 'お問合せ一覧', admin_contacts_path, class:"text-white" %>
     </div>
     <div class='col-lg-4 col-xs-12 text-center'>
       <!--検索機能-->
@@ -27,6 +26,7 @@
       <div class="col-lg-4 col-xs-12 d-flex justify-content-right">
         <div class='headerpoint'>
         <!--ユーザー一覧-->
+        <div class='col-lg-2 col-xs-12 text-center'>
         <div class='col-xs-12 text-center'>
           <%= link_to admin_users_path,class: 'nav-link text-light' do %>
           <%= image_tag 'user_all.png', size: "110x30" %>
@@ -38,12 +38,22 @@
           <%= image_tag 'spot_all.png', size: "110x30" %>
           <% end %>
         </div>
+        </div>
+        <div class='col-lg-2 col-xs-0 text-center'></div>
         <!--プラン一覧-->
+        <div class='col-lg-2 col-xs-12 text-center'>
         <div class='col-xs-12 text-center'>
           <%= link_to admin_plans_path,class: 'nav-link text-light' do %>
           <%= image_tag 'plan_oll.png', size: "110x30" %>
           <% end %>
         </div>
+        <div class='col-xs-12 text-center'>
+          <%= link_to admin_contacts_path,class: 'nav-link text-light' do %>
+          <%= image_tag 'contact.png', size: "110x30" %>
+          <% end %>
+        </div>
+        </div>
+        <div class='col-lg-2 col-xs-0 text-center'></div>
         <!--ログアウト-->
         <div class='col-xs-12 text-center'>
           <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
