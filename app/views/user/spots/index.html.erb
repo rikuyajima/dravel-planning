@@ -12,6 +12,7 @@
                 <%= image_tag spot.images[0], size: '200x150' %><br>
               <% end %>
                 <%= spot.perfecture.name %>:<%= spot.address %>
+              <% if spot.spot_comments.average(:rate).present? %>
                 <% if spot.spot_comments.average(:rate).ceil(1) < 1.5  %>
                   <p><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %>：平均<%= spot.spot_comments.average(:rate).ceil(1) %>/5点</p>
                 <% elsif spot.spot_comments.average(:rate).ceil(1) > 1.4 && spot.spot_comments.average(:rate).ceil(1) < 2 %>
@@ -31,6 +32,9 @@
                 <% elsif spot.spot_comments.average(:rate).ceil(1) > 4.9 %>
                   <p><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %>：平均<%= spot.spot_comments.average(:rate).ceil(1) %>/5点</p>
                 <% end %>
+              <% else %>
+                <p>平均--/5点</p>
+              <% end %>
             </div>
           <% end %>
         </div>
