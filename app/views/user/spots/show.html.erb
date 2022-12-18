@@ -16,7 +16,11 @@
    <div class="repoint">
     <div class='col-md-10 col-xs-10'>
     <h3 class="spotname"><strong><i class="fa-solid fa-map"></i> <%= @spot.address%></strong></h3>
-    <%= render 'user/spots/star', rate: @rate %> <strong>（<%= @rate %>／5点）</strong>
+    <% if @rate.present? %>
+    <%= render 'user/spots/star', rate: @rate %> <strong>（<%= @rate.ceil(1) %>／5点）</strong>
+    <% else %>
+    <strong>（--／5点）</strong>
+    <% end %>
     <div class="welcome">投稿者：<%= @spot.user.name %></div>
       <h4>投稿写真一覧</h4>
         <div class="row">
