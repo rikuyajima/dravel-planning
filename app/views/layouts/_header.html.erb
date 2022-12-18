@@ -120,25 +120,27 @@
     <!--非ログイン時のヘッダー-->
     <% else %>
     <div class="item">
-      <div class = "col-lg-1 col-xs-12 text-center" >
+      <div class = "col-lg-4 col-xs-12 text-center" >
       </div>
       <div class = "col-lg-6 col-xs-12 text-center" >
         <span class="text-white">会員登録をすると様々な機能を使うことができます！</span>
       </div>
-      <div class="col-lag-4 col-xs-12 d-flex justify-content-right">
+      <div class='col-lg-2 col-xs-12 text-center'>
+        <div class='col-xs-12 text-center'>
         <!--会員登録-->
-        <div class='col-lag-4 col-xs-12 text-center'>
           <%= link_to new_user_registration_path do %>
           <%= image_tag 'sign_up.png', size: "110x30" %>
           <% end %>
         </div>
+
         <!--ログイン-->
-        <div class='col-lag-4 col-xs-12 text-center'>
+        <div class='col-lag-2 col-xs-12 text-center'>
           <%= link_to new_user_session_path do %>
           <%= image_tag 'log_in.png', size: "110x30" %>
           <% end %>
         </div>
       </div>
+
       </div>
     <% end %>
     </div>
