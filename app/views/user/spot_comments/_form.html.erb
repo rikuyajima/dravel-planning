@@ -1,5 +1,6 @@
 <%= form_with model: [spot,spot_comment], local: false do |f| %>
    <div><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに(140文字以内)", class: 'form-control',size: "10x5" %></div>
+   <div>評価：★<%= f.select :rate,*[1..5], {include_blank: '--'} %>つ</div>
    <div class="plan_form"><%= f.file_field :spot_images, multiple: true, class: "form-control-file image", accept: 'image/*' %></div>
    <div class="area_space"><%= f.submit "送信する", class: "button" %></div>
 <% end %>

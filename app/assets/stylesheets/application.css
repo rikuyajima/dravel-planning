@@ -182,6 +182,15 @@ ul {
   padding-top: 10px;
 }
 
+.star{
+  color: #FFD700;
+}
+
+.star_item {
+    display: flex;
+  }
+
+
 .spotname{
   padding-top: 10px;
 }

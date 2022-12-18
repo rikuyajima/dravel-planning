@@ -12,6 +12,25 @@
                 <%= image_tag spot.images[0], size: '200x150' %><br>
               <% end %>
                 <%= spot.perfecture.name %>:<%= spot.address %>
+                <% if spot.spot_comments.average(:rate).ceil(1) < 1.5  %>
+                  <p><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %>：平均<%= spot.spot_comments.average(:rate).ceil(1) %>/5点</p>
+                <% elsif spot.spot_comments.average(:rate).ceil(1) > 1.4 && spot.spot_comments.average(:rate).ceil(1) < 2 %>
+                  <p><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-half.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %>：平均<%= spot.spot_comments.average(:rate).ceil(1) %>/5点</p>
+                <% elsif spot.spot_comments.average(:rate).ceil(1) > 1.9 && spot.spot_comments.average(:rate).ceil(1) < 2.5 %>
+                  <p><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %>：平均<%= spot.spot_comments.average(:rate).ceil(1) %>/5点</p>
+                <% elsif spot.spot_comments.average(:rate).ceil(1) > 2.4 && spot.spot_comments.average(:rate).ceil(1) < 3 %>
+                  <%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-half.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %>：平均<%= spot.spot_comments.average(:rate).ceil(1) %>/5点</p>
+                <% elsif spot.spot_comments.average(:rate).ceil(1) > 2.9 && spot.spot_comments.average(:rate).ceil(1) < 3.5 %>
+                  <p><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %>：平均<%= spot.spot_comments.average(:rate).ceil(1) %>/5点</p>
+                <% elsif spot.spot_comments.average(:rate).ceil(1) > 3.5 && spot.spot_comments.average(:rate).ceil(1) < 4 %>
+                  <p><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-half.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %>：<平均%= spot.spot_comments.average(:rate).ceil(1) %>/5点</p>
+                <% elsif spot.spot_comments.average(:rate).ceil(1) > 3.9 && spot.spot_comments.average(:rate).ceil(1) < 4.5 %>
+                  <p><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-off.png', size: "15x15" %>：平均<%= spot.spot_comments.average(:rate).ceil(1) %>/5点</p>
+                <% elsif spot.spot_comments.average(:rate).ceil(1) > 4.4 && spot.spot_comments.average(:rate).ceil(1) < 5 %>
+                  <p><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-half.png', size: "15x15" %>：平均<%= spot.spot_comments.average(:rate).ceil(1) %>/5点</p>
+                <% elsif spot.spot_comments.average(:rate).ceil(1) > 4.9 %>
+                  <p><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %><%= image_tag 'star-on.png', size: "15x15" %>：平均<%= spot.spot_comments.average(:rate).ceil(1) %>/5点</p>
+                <% end %>
             </div>
           <% end %>
         </div>

@@ -4,6 +4,17 @@
       <%= image_tag spot_comment.user.get_profile_image.variant(resize: '50x50') %>
       <%= spot_comment.user.name %></td>
       <%= spot_comment.created_at.strftime('%Y/%m/%d') %>
+      <% if spot_comment.rate == 1 %>
+        <div class="star_item"><div>評価：</div><div class="star">★☆☆☆☆</div></div>
+      <% elsif spot_comment.rate == 2 %>
+        <div class="star_item"><div>評価：</div><div class="star">★★☆☆☆</div></div>
+      <% elsif spot_comment.rate == 3 %>
+        <div class="star_item"><div>評価：</div><div class="star">★★★☆☆</div></div>
+      <% elsif spot_comment.rate == 4 %>
+        <div class="star_item"><div>評価：</div><div class="star">★★★★☆</div></div>
+      <% elsif spot_comment.rate == 5 %>
+        <div class="star_item"><div>評価：</div><div class="star">★★★★★</div></div>
+      <% end %>
       <div><%= spot_comment.comment %></div>
       <div class="row">
           <% spot_comment.spot_images.each do |image| %>

@@ -1,0 +1,19 @@
+<% if rate < 1.5  %>
+  <%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %>
+<% elsif rate > 1.4 && rate < 2 %>
+  <%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-half.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %>
+<% elsif rate > 1.9 && rate < 2.5 %>
+  <%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %>
+<% elsif rate > 2.4 && rate < 3 %>
+  <%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-half.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %>
+<% elsif rate > 2.9 && rate < 3.5 %>
+  <%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %>
+<% elsif rate > 3.5 && rate < 4 %>
+  <%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-half.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %>
+<% elsif rate > 3.9 && rate < 4.5 %>
+  <%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-off.png', size: "30x30" %>
+<% elsif rate > 4.4 && rate < 5 %>
+  <%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-half.png', size: "30x30" %>
+<% elsif rate > 4.9 %>
+  <%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %><%= image_tag 'star-on.png', size: "30x30" %>
+<% end %>

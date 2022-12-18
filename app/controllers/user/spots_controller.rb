@@ -29,6 +29,7 @@ class User::SpotsController < ApplicationController
 
   def show
     @spot = Spot.find(params[:id])
+    @rate = @spot.spot_comments.average(:rate).ceil(1)
     @user = @spot.user
     @perfectures = Perfecture.all
     @comment = SpotComment.new
