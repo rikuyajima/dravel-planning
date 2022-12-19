@@ -1,6 +1,6 @@
 class Contact < ApplicationRecord
   belongs_to :user
-  
+
   validates :kinds, presence: true
   validates :subject, presence: true, length: { maximum: 30 }
   validates :message, presence: true
