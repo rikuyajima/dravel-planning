@@ -4,12 +4,17 @@
       <div class="col-10">
       <h4 class="mb-4"><strong>お問い合わせ詳細画面</strong></h4>
         <div class="shadow-lg px-5 py-5">
-          <div>お問合せ種別:</div>
+
+          <div>ユーザー</div>
+          <div class="plan_form">
+            <%= @contact.user.name %>
+          </div>
+          <div>お問合せ種別</div>
           <div class="plan_form">
             <%= @contact.kinds %>
           </div>
 
-          <div>件名:</div>
+          <div>件名</div>
           <div class="plan_form">
             <%= @contact.subject %>
           </div>

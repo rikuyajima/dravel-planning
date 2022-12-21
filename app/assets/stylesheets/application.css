@@ -189,7 +189,10 @@ ul {
 .star_item {
     display: flex;
   }
-
+  
+.favorite {
+    color: #FF66FF;
+  }
 
 .spotname{
   padding-top: 10px;

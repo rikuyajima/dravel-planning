@@ -23,7 +23,7 @@ class UserMailer < ApplicationMailer
     @email = @spot.user.email
     mail to: @email, subject: '審査完了のお知らせ'
   end
-  
+
   def contact_email(contact, user)
     @contact = contact
     @user = user
@@ -31,7 +31,7 @@ class UserMailer < ApplicationMailer
     @email = @contact.user.email
     mail to: @email, cc: "dravel.check@gmail.com", subject: 'お問合せを受け付けました'
   end
-  
+
   def update_email(contact, user)
     @contact = contact
     @user = user
@@ -39,5 +39,5 @@ class UserMailer < ApplicationMailer
     @email = @contact.user.email
     mail to: @email, subject: '先日のお問合せ内容の回答'
   end
-  
+
 end
