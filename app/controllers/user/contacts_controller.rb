@@ -1,4 +1,5 @@
 class User::ContactsController < ApplicationController
+  before_action :user_scan, only: [:new]
   def new
     @contact = Contact.new
   end
@@ -32,6 +33,12 @@ class User::ContactsController < ApplicationController
     @contact.destroy
       flash[:notice] = "削除しました。"
       redirect_to '/admin/contacts'
+  end
+
+  def user_scan
+   unless user_signed_in?
+     redirect_to root_path
+   end
   end
 
   private
