@@ -84,7 +84,7 @@ Rails.application.configure do
     address:              'smtp.gmail.com',
     domain:               'gmail.com',
     user_name:            'dravel.kanri@gmail.com',
-    password:             'wepzinveupxcxddb',
+    password:             '',
     authentication:       'login',
     enable_starttls_auto: true
   }
